@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maya on Keys — Brand Guidelines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet" />
+  <style>
+    /* ─────────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────────── */
+    :root {
+      /* Brand colors */
+      --color-purple-50:  #f5f0ff;
+      --color-purple-100: #ede0ff;
+      --color-purple-200: #d8c0ff;
+      --color-purple-400: #a87fda;
+      --color-purple-600: #7c3aed;
+      --color-purple-700: #6d28d9;
+
+      --color-teal-50:  #f0fafa;
+      --color-teal-100: #cceeee;
+      --color-teal-200: #99dddd;
+      --color-teal-400: #2bb5b5;
+      --color-teal-600: #0d8080;
+      --color-teal-700: #0a6666;
+
+      --color-warm-white: #fdfaf6;
+      --color-warm-50:    #faf7f2;
+      --color-warm-100:   #f5efe4;
+      --color-warm-200:   #e8d9c4;
+
+      --color-amber-100: #fef3c7;
+      --color-amber-400: #f59e0b;
+      --color-amber-600: #d97706;
+
+      --color-green-100: #d1fae5;
+      --color-green-600: #059669;
+
+      --color-neutral-50:  #f8f8f8;
+      --color-neutral-100: #f0f0f0;
+      --color-neutral-300: #d4d4d4;
+      --color-neutral-500: #737373;
+      --color-neutral-700: #404040;
+      --color-neutral-900: #171717;
+
+      /* Typography */
+      --font-display: 'Fredoka One', cursive;
+      --font-body:    'Nunito', sans-serif;
+
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.5rem;
+      --text-3xl:  1.875rem;
+      --text-4xl:  2.25rem;
+      --text-5xl:  3rem;
+
+      /* Spacing */
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+
+      /* Radius */
+      --radius-sm:   0.375rem;
+      --radius-md:   0.75rem;
+      --radius-lg:   1.25rem;
+      --radius-xl:   2rem;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.10), 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    /* ─────────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-warm-white);
+      color: var(--color-neutral-700);
+      line-height: 1.65;
+      font-size: var(--text-base);
+    }
+
+    /* ─────────────────────────────────────────────
+       LAYOUT
+    ───────────────────────────────────────────── */
+    .page-header {
+      background: linear-gradient(135deg, var(--color-purple-600) 0%, var(--color-teal-400) 100%);
+      padding: var(--space-16) var(--space-8);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-header-inner { position: relative; max-width: 800px; margin: 0 auto; }
+    .page-header-eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: var(--space-1) var(--space-4);
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-4);
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+    }
+    .page-header p {
+      color: rgba(255,255,255,0.85);
+      font-size: var(--text-lg);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar nav + main content */
+    .layout { display: flex; max-width: 1200px; margin: 0 auto; }
+
+    aside {
+      width: 220px;
+      flex-shrink: 0;
+      padding: var(--space-10) var(--space-6);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    aside nav { display: flex; flex-direction: column; gap: var(--space-1); }
+    aside nav a {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-neutral-500);
+      text-decoration: none;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+      transition: color 0.15s, background 0.15s;
+    }
+    aside nav a:hover,
+    aside nav a.active {
+      color: var(--color-purple-600);
+      background: var(--color-purple-50);
+    }
+    aside nav .nav-section-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-neutral-300);
+      padding: var(--space-3) var(--space-3) var(--space-1);
+      margin-top: var(--space-4);
+    }
+    aside nav .nav-section-label:first-child { margin-top: 0; }
+
+    main {
+      flex: 1;
+      min-width: 0;
+      padding: var(--space-10) var(--space-10) var(--space-20);
+      border-left: 1px solid var(--color-warm-100);
+    }
+
+    /* Sections */
+    .section {
+      padding-top: var(--space-12);
+      margin-bottom: var(--space-12);
+      border-bottom: 1px solid var(--color-warm-100);
+      padding-bottom: var(--space-12);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-teal-400);
+      margin-bottom: var(--space-2);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      color: var(--color-neutral-900);
+      margin-bottom: var(--space-3);
+      line-height: 1.2;
+    }
+    .section-desc {
+      color: var(--color-neutral-500);
+      max-width: 620px;
+      margin-bottom: var(--space-8);
+      font-size: var(--text-base);
+    }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-warm-100);
+      overflow: hidden;
+    }
+    .card-body { padding: var(--space-6); }
+
+    /* Grid helpers */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+
+    /* ─────────────────────────────────────────────
+       LOGO / BRAND MARK
+    ───────────────────────────────────────────── */
+    .logo-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+      align-items: flex-start;
+    }
+    .logo-variant {
+      flex: 1;
+      min-width: 200px;
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .logo-variant-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .logo-light { background: var(--color-warm-white); border: 1px solid var(--color-warm-100); }
+    .logo-light .logo-variant-label { color: var(--color-neutral-400); }
+    .logo-dark  { background: #1e1040; }
+    .logo-dark .logo-variant-label  { color: rgba(255,255,255,0.4); }
+    .logo-purple { background: var(--color-purple-600); }
+    .logo-purple .logo-variant-label { color: rgba(255,255,255,0.5); }
+
+    /* SVG Logo component */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .brand-logo-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .brand-logo-icon-light {
+      background: linear-gradient(135deg, var(--color-purple-400), var(--color-teal-400));
+    }
+    .brand-logo-icon-dark,
+    .brand-logo-icon-purple {
+      background: rgba(255,255,255,0.2);
+    }
+    .brand-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-logo-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+    }
+    .brand-logo-tagline {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .brand-logo-light .brand-logo-name    { color: var(--color-neutral-900); }
+    .brand-logo-light .brand-logo-tagline { color: var(--color-neutral-500); }
+    .brand-logo-dark .brand-logo-name,
+    .brand-logo-dark .brand-logo-tagline  { color: #fff; }
+    .brand-logo-purple .brand-logo-name,
+    .brand-logo-purple .brand-logo-tagline { color: #fff; }
+
+    /* ─────────────────────────────────────────────
+       COLOR PALETTE
+    ───────────────────────────────────────────── */
+    .color-row { display: flex; flex-direction: column; gap: var(--space-8); }
+
+    .palette-group-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-3);
+    }
+
+    .palette-swatches {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      text-align: center;
+    }
+    .swatch-circle {
+      width: 56px; height: 56px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      border: 2px solid rgba(0,0,0,0.05);
+    }
+    .swatch-name { font-size: 0.65rem; font-weight: 700; color: var(--color-neutral-500); line-height: 1.2; }
+    .swatch-hex  { font-size: 0.6rem; color: var(--color-neutral-400); font-family: monospace; }
+
+    /* Primary palette row (larger) */
+    .palette-primary { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+    .swatch-lg .swatch-circle { width: 80px; height: 80px; }
+
+    /* Usage guidance */
+    .color-usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    .color-usage-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-warm-100);
+    }
+    .color-usage-swatch {
+      height: 64px;
+    }
+    .color-usage-body {
+      background: #fff;
+      padding: var(--space-3) var(--space-4);
+    }
+    .color-usage-label { font-size: var(--text-sm); font-weight: 700; color: var(--color-neutral-700); }
+    .color-usage-desc  { font-size: var(--text-xs); color: var(--color-neutral-500); margin-top: 2px; }
+
+    /* ─────────────────────────────────────────────
+       TYPOGRAPHY
+    ───────────────────────────────────────────── */
+    .type-specimen { display: flex; flex-direction: column; gap: var(--space-8); }
+
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-warm-100);
+    }
+    .type-row:last-child { border-bottom: none; }
+
+    .type-meta {
+      width: 140px;
+      flex-shrink: 0;
+    }
+    .type-meta-name  { font-size: var(--text-xs); font-weight: 700; color: var(--color-neutral-700); text-transform: uppercase; letter-spacing: 0.06em; }
+    .type-meta-spec  { font-size: var(--text-xs); color: var(--color-neutral-400); font-family: monospace; line-height: 1.8; }
+    .type-sample     { flex: 1; }
+
+    .type-display-1   { font-family: var(--font-display); font-size: var(--text-5xl);  color: var(--color-neutral-900); line-height: 1.0; }
+    .type-display-2   { font-family: var(--font-display); font-size: var(--text-4xl);  color: var(--color-neutral-900); line-height: 1.1; }
+    .type-display-3   { font-family: var(--font-display); font-size: var(--text-3xl);  color: var(--color-neutral-900); line-height: 1.2; }
+    .type-heading     { font-family: var(--font-body);    font-size: var(--text-2xl);  font-weight: 800; color: var(--color-neutral-900); line-height: 1.3; }
+    .type-subheading  { font-family: var(--font-body);    font-size: var(--text-xl);   font-weight: 700; color: var(--color-neutral-700); }
+    .type-body-lg     { font-family: var(--font-body);    font-size: var(--text-lg);   font-weight: 400; color: var(--color-neutral-700); }
+    .type-body        { font-family: var(--font-body);    font-size: var(--text-base); font-weight: 400; color: var(--color-neutral-700); }
+    .type-body-sm     { font-family: var(--font-body);    font-size: var(--text-sm);   font-weight: 400; color: var(--color-neutral-500); }
+    .type-label       { font-family: var(--font-body);    font-size: var(--text-xs);   font-weight: 700; color: var(--color-neutral-500); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .font-card {
+      border: 1px solid var(--color-warm-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #fff;
+    }
+    .font-card-header {
+      padding: var(--space-6) var(--space-6) var(--space-4);
+      border-bottom: 1px solid var(--color-warm-100);
+    }
+    .font-card-body   { padding: var(--space-6); }
+    .font-card-name   { font-size: var(--text-xl); font-weight: 800; color: var(--color-neutral-900); margin-bottom: var(--space-1); }
+    .font-card-role   { font-size: var(--text-sm); color: var(--color-neutral-500); }
+    .font-card-alpha  { font-size: var(--text-2xl); line-height: 1.4; color: var(--color-neutral-700); }
+    .font-card-alpha.display { font-family: var(--font-display); font-size: var(--text-3xl); }
+    .font-card-alpha.body    { font-family: var(--font-body); font-weight: 600; }
+    .font-card-nums   { font-size: var(--text-lg); color: var(--color-neutral-400); margin-top: var(--space-2); }
+    .font-card-nums.display { font-family: var(--font-display); }
+    .font-card-nums.body    { font-family: var(--font-body); }
+
+    /* ─────────────────────────────────────────────
+       COMPONENTS
+    ───────────────────────────────────────────── */
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.1s, box-shadow 0.15s, opacity 0.15s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-purple-600), var(--color-purple-400));
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45); }
+
+    .btn-teal {
+      background: linear-gradient(135deg, var(--color-teal-600), var(--color-teal-400));
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(43, 181, 181, 0.3);
+    }
+    .btn-teal:hover { box-shadow: 0 6px 20px rgba(43, 181, 181, 0.4); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-purple-600);
+      border: 2px solid var(--color-purple-200);
+    }
+    .btn-outline:hover { background: var(--color-purple-50); border-color: var(--color-purple-400); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-neutral-700);
+    }
+    .btn-ghost:hover { background: var(--color-warm-100); }
+
+    .btn-sm {
+      font-size: var(--text-xs);
+      padding: 0.4rem 1rem;
+    }
+    .btn-lg {
+      font-size: var(--text-base);
+      padding: 0.875rem 1.75rem;
+    }
+
+    .btn-group { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+    }
+    .badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+    .badge-learned  { background: var(--color-green-100); color: var(--color-green-600); }
+    .badge-learned::before  { background: var(--color-green-600); }
+    .badge-learning { background: var(--color-amber-100); color: var(--color-amber-600); }
+    .badge-learning::before { background: var(--color-amber-400); }
+    .badge-purple   { background: var(--color-purple-100); color: var(--color-purple-700); }
+    .badge-purple::before   { background: var(--color-purple-400); }
+    .badge-teal     { background: var(--color-teal-100);   color: var(--color-teal-600); }
+    .badge-teal::before     { background: var(--color-teal-400); }
+
+    /* Song Card */
+    .song-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-warm-100);
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      box-shadow: var(--shadow-sm);
+    }
+    .song-card-icon {
+      width: 40px; height: 40px;
+      background: var(--color-purple-50);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .song-card-info { flex: 1; min-width: 0; }
+    .song-card-title { font-weight: 700; color: var(--color-neutral-900); font-size: var(--text-sm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .song-card-composer { font-size: var(--text-xs); color: var(--color-neutral-500); margin-top: 2px; }
+
+    /* Milestone Entry */
+    .milestone-entry {
+      display: flex;
+      gap: var(--space-5);
+    }
+    .milestone-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .milestone-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--color-purple-400);
+      border: 2px solid var(--color-purple-200);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .milestone-line-bar {
+      flex: 1;
+      width: 2px;
+      background: var(--color-purple-100);
+      margin-top: var(--space-2);
+    }
+    .milestone-body { padding-bottom: var(--space-6); }
+    .milestone-date  { font-size: var(--text-xs); font-weight: 700; color: var(--color-teal-400); margin-bottom: var(--space-1); text-transform: uppercase; letter-spacing: 0.06em; }
+    .milestone-title { font-weight: 800; font-size: var(--text-base); color: var(--color-neutral-900); margin-bottom: var(--space-2); }
+    .milestone-desc  { font-size: var(--text-sm); color: var(--color-neutral-500); line-height: 1.6; }
+
+    /* Stats tile */
+    .stat-tile {
+      background: #fff;
+      border: 1px solid var(--color-warm-100);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-tile-num {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .stat-tile-label { font-size: var(--text-sm); color: var(--color-neutral-500); font-weight: 600; }
+    .stat-purple .stat-tile-num { color: var(--color-purple-600); }
+    .stat-teal   .stat-tile-num { color: var(--color-teal-600); }
+    .stat-amber  .stat-tile-num { color: var(--color-amber-600); }
+
+    /* Instagram banner */
+    .ig-banner {
+      background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      color: #fff;
+      text-decoration: none;
+    }
+    .ig-banner-icon { font-size: 1.75rem; flex-shrink: 0; }
+    .ig-banner-text { flex: 1; }
+    .ig-banner-handle { font-family: var(--font-display); font-size: var(--text-xl); }
+    .ig-banner-sub    { font-size: var(--text-sm); opacity: 0.85; }
+    .ig-banner-arrow  { font-size: 1.2rem; }
+
+    /* Form elements */
+    .form-demo { display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px; }
+    .form-group { display: flex; flex-direction: column; gap: var(--space-2); }
+    .form-label {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-neutral-700);
+    }
+    .form-input {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      padding: 0.625rem 0.875rem;
+      border: 2px solid var(--color-warm-200);
+      border-radius: var(--radius-md);
+      background: #fff;
+      color: var(--color-neutral-900);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .form-input:focus {
+      border-color: var(--color-purple-400);
+      box-shadow: 0 0 0 3px var(--color-purple-50);
+    }
+
+    /* ─────────────────────────────────────────────
+       SPACING & RADIUS SHOWCASE
+    ───────────────────────────────────────────── */
+    .spacing-row { display: flex; align-items: flex-end; gap: var(--space-4); flex-wrap: wrap; }
+    .spacing-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .spacing-rect {
+      background: var(--color-purple-200);
+      border-radius: 4px;
+      width: 20px;
+    }
+    .spacing-label { font-size: 0.65rem; font-weight: 700; color: var(--color-neutral-500); font-family: monospace; }
+
+    .radius-row { display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+    .radius-block { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+    .radius-box {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--color-purple-200), var(--color-teal-200));
+      border: 2px solid var(--color-purple-200);
+    }
+    .radius-label { font-size: 0.65rem; font-weight: 700; color: var(--color-neutral-500); font-family: monospace; text-align: center; }
+
+    /* ─────────────────────────────────────────────
+       ICONOGRAPHY
+    ───────────────────────────────────────────── */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: var(--space-3);
+    }
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-2);
+      background: #fff;
+      border: 1px solid var(--color-warm-100);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .icon-item span:first-child { font-size: 1.5rem; }
+    .icon-item-label { font-size: 0.6rem; font-weight: 600; color: var(--color-neutral-400); }
+
+    /* ─────────────────────────────────────────────
+       VOICE & TONE
+    ───────────────────────────────────────────── */
+    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+    .voice-card {
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      border: 1px solid;
+    }
+    .voice-do   { background: var(--color-green-100); border-color: #a7f3d0; }
+    .voice-dont { background: #fee2e2; border-color: #fecaca; }
+    .voice-card-title {
+      font-size: var(--text-sm);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-4);
+    }
+    .voice-do   .voice-card-title { color: var(--color-green-600); }
+    .voice-dont .voice-card-title { color: #dc2626; }
+    .voice-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
+    .voice-list li { font-size: var(--text-sm); color: var(--color-neutral-700); display: flex; gap: var(--space-2); }
+    .voice-list li::before { font-size: 1rem; flex-shrink: 0; line-height: 1.4; }
+    .voice-do   .voice-list li::before { content: '✓'; color: var(--color-green-600); font-weight: 800; }
+    .voice-dont .voice-list li::before { content: '✗'; color: #dc2626; font-weight: 800; }
+
+    /* ─────────────────────────────────────────────
+       HERO PREVIEW
+    ───────────────────────────────────────────── */
+    .hero-preview {
+      background: linear-gradient(160deg, var(--color-purple-50) 0%, var(--color-teal-50) 100%);
+      border: 1px solid var(--color-warm-100);
+      border-radius: var(--radius-xl);
+      padding: var(--space-10) var(--space-8);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-preview::before {
+      content: '🎹';
+      position: absolute;
+      font-size: 10rem;
+      opacity: 0.05;
+      top: -1rem;
+      right: -1rem;
+      line-height: 1;
+    }
+    .hero-preview-tagline {
+      display: inline-block;
+      background: var(--color-purple-100);
+      color: var(--color-purple-700);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: var(--space-1) var(--space-4);
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-4);
+    }
+    .hero-preview h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--color-neutral-900);
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+    }
+    .hero-preview h2 span { color: var(--color-purple-600); }
+    .hero-preview p {
+      color: var(--color-neutral-500);
+      font-size: var(--text-lg);
+      max-width: 440px;
+      margin: 0 auto var(--space-8);
+    }
+    .hero-preview-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-warm-100);
+    }
+    .hero-stat-item { text-align: center; }
+    .hero-stat-num  {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--color-purple-600);
+      line-height: 1;
+    }
+    .hero-stat-label { font-size: var(--text-xs); color: var(--color-neutral-500); font-weight: 600; margin-top: 4px; }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .layout { flex-direction: column; }
+      aside {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: var(--space-4) var(--space-6);
+        border-bottom: 1px solid var(--color-warm-100);
+      }
+      aside nav { flex-direction: row; flex-wrap: wrap; }
+      aside nav .nav-section-label { display: none; }
+      main { padding: var(--space-6); border-left: none; }
+      .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .voice-grid { grid-template-columns: 1fr; }
+      .type-row { flex-direction: column; }
+      .type-meta { width: 100%; }
+    }
+    @media (max-width: 540px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .hero-preview-stats { gap: var(--space-4); }
+    }
+
+    /* ─────────────────────────────────────────────
+       MISC UTILS
+    ───────────────────────────────────────────── */
+    .mt-4  { margin-top: var(--space-4); }
+    .mt-6  { margin-top: var(--space-6); }
+    .mt-8  { margin-top: var(--space-8); }
+    .mb-4  { margin-bottom: var(--space-4); }
+    .mb-6  { margin-bottom: var(--space-6); }
+    .flex  { display: flex; }
+    .flex-wrap { flex-wrap: wrap; }
+    .gap-3 { gap: var(--space-3); }
+    .gap-4 { gap: var(--space-4); }
+    .gap-6 { gap: var(--space-6); }
+    .items-start { align-items: flex-start; }
+    .items-center { align-items: center; }
+    .divider {
+      height: 1px;
+      background: var(--color-warm-100);
+      margin: var(--space-8) 0;
+    }
+    .tag {
+      font-size: var(--text-xs);
+      font-family: monospace;
+      background: var(--color-warm-100);
+      color: var(--color-purple-700);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Page footer */
+    .page-footer {
+      text-align: center;
+      padding: var(--space-8);
+      background: var(--color-neutral-900);
+      color: rgba(255,255,255,0.4);
+      font-size: var(--text-xs);
+    }
+    .page-footer span { color: rgba(255,255,255,0.7); }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <span class="page-header-eyebrow">Brand Guidelines v1.0</span>
+      <h1>Maya on Keys</h1>
+      <p>Visual identity, design tokens, and component patterns for Maya's Piano Journey website.</p>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ── SIDEBAR NAV ──────────────────────── -->
+    <aside>
+      <nav>
+        <span class="nav-section-label">Identity</span>
+        <a href="#logo">Logo &amp; Mark</a>
+        <a href="#colors">Color Palette</a>
+        <a href="#typography">Typography</a>
+        <a href="#voice">Voice &amp; Tone</a>
+
+        <span class="nav-section-label">Tokens</span>
+        <a href="#spacing">Spacing</a>
+        <a href="#radius">Border Radius</a>
+        <a href="#shadows">Shadows</a>
+
+        <span class="nav-section-label">Components</span>
+        <a href="#buttons">Buttons</a>
+        <a href="#badges">Badges</a>
+        <a href="#cards">Cards</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#stats">Stats</a>
+        <a href="#icons">Iconography</a>
+
+        <span class="nav-section-label">Preview</span>
+        <a href="#hero">Hero Preview</a>
+      </nav>
+    </aside>
+
+    <!-- ── MAIN CONTENT ─────────────────────── -->
+    <main>
+
+      <!-- ══════════════════════════════════════
+           LOGO
+      ══════════════════════════════════════ -->
+      <section class="section" id="logo">
+        <p class="section-label">Identity</p>
+        <h2 class="section-title">Logo &amp; Brand Mark</h2>
+        <p class="section-desc">
+          The logo combines a playful piano-key icon with the Fredoka One display typeface.
+          Use the appropriate variant depending on the background.
+        </p>
+
+        <div class="logo-showcase">
+          <!-- Light -->
+          <div class="logo-variant logo-light">
+            <a class="brand-logo brand-logo-light" href="#">
+              <div class="brand-logo-icon brand-logo-icon-light">
+                <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- White piano keys -->
+                  <rect x="1" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="6" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="11" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="16" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="21" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <!-- Black piano keys -->
+                  <rect x="4" y="1" width="3" height="9" rx="1" fill="rgba(0,0,0,0.5)"/>
+                  <rect x="9" y="1" width="3" height="9" rx="1" fill="rgba(0,0,0,0.5)"/>
+                  <rect x="19" y="1" width="3" height="9" rx="1" fill="rgba(0,0,0,0.5)"/>
+                  <!-- Music note -->
+                  <text x="3" y="21" font-size="10" fill="white" font-family="sans-serif">♪</text>
+                </svg>
+              </div>
+              <div class="brand-logo-text">
+                <span class="brand-logo-name brand-logo-light" style="color:var(--color-neutral-900)">Maya on Keys</span>
+                <span class="brand-logo-tagline" style="color:var(--color-neutral-500)">Piano Journey</span>
+              </div>
+            </a>
+            <span class="logo-variant-label" style="color:var(--color-neutral-400)">Light Background</span>
+          </div>
+
+          <!-- Dark -->
+          <div class="logo-variant logo-dark">
+            <a class="brand-logo brand-logo-dark" href="#">
+              <div class="brand-logo-icon brand-logo-icon-dark">
+                <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="6" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="11" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="16" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="21" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="4" y="1" width="3" height="9" rx="1" fill="rgba(30,16,64,0.7)"/>
+                  <rect x="9" y="1" width="3" height="9" rx="1" fill="rgba(30,16,64,0.7)"/>
+                  <rect x="19" y="1" width="3" height="9" rx="1" fill="rgba(30,16,64,0.7)"/>
+                  <text x="3" y="21" font-size="10" fill="white" font-family="sans-serif">♪</text>
+                </svg>
+              </div>
+              <div class="brand-logo-text">
+                <span class="brand-logo-name" style="color:#fff">Maya on Keys</span>
+                <span class="brand-logo-tagline" style="color:rgba(255,255,255,0.5)">Piano Journey</span>
+              </div>
+            </a>
+            <span class="logo-variant-label" style="color:rgba(255,255,255,0.4)">Dark Background</span>
+          </div>
+
+          <!-- Purple -->
+          <div class="logo-variant logo-purple">
+            <a class="brand-logo brand-logo-purple" href="#">
+              <div class="brand-logo-icon brand-logo-icon-purple">
+                <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="6" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="11" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="16" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="21" y="1" width="4" height="14" rx="1" fill="white"/>
+                  <rect x="4" y="1" width="3" height="9" rx="1" fill="rgba(124,58,237,0.5)"/>
+                  <rect x="9" y="1" width="3" height="9" rx="1" fill="rgba(124,58,237,0.5)"/>
+                  <rect x="19" y="1" width="3" height="9" rx="1" fill="rgba(124,58,237,0.5)"/>
+                  <text x="3" y="21" font-size="10" fill="white" font-family="sans-serif">♪</text>
+                </svg>
+              </div>
+              <div class="brand-logo-text">
+                <span class="brand-logo-name" style="color:#fff">Maya on Keys</span>
+                <span class="brand-logo-tagline" style="color:rgba(255,255,255,0.5)">Piano Journey</span>
+              </div>
+            </a>
+            <span class="logo-variant-label" style="color:rgba(255,255,255,0.4)">Brand Purple</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="section-label">Clearance &amp; Don'ts</p>
+        <ul style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:2;padding-left:1.25rem;">
+          <li>Maintain at least <strong style="color:var(--color-neutral-700)">16px</strong> clearance around the logo on all sides.</li>
+          <li>Do not stretch, rotate, recolor, or apply drop shadows to the logo.</li>
+          <li>Do not place on low-contrast or busy photographic backgrounds without an overlay.</li>
+          <li>Minimum display size: <strong style="color:var(--color-neutral-700)">120px wide</strong> for the full lockup; use the icon alone below that.</li>
+        </ul>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           COLORS
+      ══════════════════════════════════════ -->
+      <section class="section" id="colors">
+        <p class="section-label">Identity</p>
+        <h2 class="section-title">Color Palette</h2>
+        <p class="section-desc">
+          Warm, soft tones that feel child-friendly without being babyish.
+          Purple is the primary brand color; teal provides energy and contrast; warm white creates breathing room.
+        </p>
+
+        <!-- Primary three -->
+        <p class="palette-group-title">Primary Brand Colors</p>
+        <div class="palette-primary">
+          <div class="swatch swatch-lg">
+            <div class="swatch-circle" style="background:#7c3aed"></div>
+            <span class="swatch-name">Brand Purple</span>
+            <span class="swatch-hex">#7c3aed</span>
+          </div>
+          <div class="swatch swatch-lg">
+            <div class="swatch-circle" style="background:#2bb5b5"></div>
+            <span class="swatch-name">Brand Teal</span>
+            <span class="swatch-hex">#2bb5b5</span>
+          </div>
+          <div class="swatch swatch-lg">
+            <div class="swatch-circle" style="background:#fdfaf6;border:2px solid #e8d9c4"></div>
+            <span class="swatch-name">Warm White</span>
+            <span class="swatch-hex">#fdfaf6</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Purple scale -->
+        <p class="palette-group-title">Purple Scale</p>
+        <div class="palette-swatches">
+          <div class="swatch"><div class="swatch-circle" style="background:#f5f0ff;border:1px solid #e0d0ff"></div><span class="swatch-name">50</span><span class="swatch-hex">#f5f0ff</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#ede0ff"></div><span class="swatch-name">100</span><span class="swatch-hex">#ede0ff</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#d8c0ff"></div><span class="swatch-name">200</span><span class="swatch-hex">#d8c0ff</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#a87fda"></div><span class="swatch-name">400</span><span class="swatch-hex">#a87fda</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#7c3aed"></div><span class="swatch-name">600 ★</span><span class="swatch-hex">#7c3aed</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#6d28d9"></div><span class="swatch-name">700</span><span class="swatch-hex">#6d28d9</span></div>
+        </div>
+
+        <!-- Teal scale -->
+        <p class="palette-group-title mt-6">Teal Scale</p>
+        <div class="palette-swatches">
+          <div class="swatch"><div class="swatch-circle" style="background:#f0fafa;border:1px solid #cce8e8"></div><span class="swatch-name">50</span><span class="swatch-hex">#f0fafa</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#cceeee"></div><span class="swatch-name">100</span><span class="swatch-hex">#cceeee</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#99dddd"></div><span class="swatch-name">200</span><span class="swatch-hex">#99dddd</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#2bb5b5"></div><span class="swatch-name">400 ★</span><span class="swatch-hex">#2bb5b5</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#0d8080"></div><span class="swatch-name">600</span><span class="swatch-hex">#0d8080</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#0a6666"></div><span class="swatch-name">700</span><span class="swatch-hex">#0a6666</span></div>
+        </div>
+
+        <!-- Neutrals -->
+        <p class="palette-group-title mt-6">Warm Neutrals</p>
+        <div class="palette-swatches">
+          <div class="swatch"><div class="swatch-circle" style="background:#fdfaf6;border:1px solid #e8d9c4"></div><span class="swatch-name">Warm White</span><span class="swatch-hex">#fdfaf6</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#faf7f2;border:1px solid #e8d9c4"></div><span class="swatch-name">Warm 50</span><span class="swatch-hex">#faf7f2</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#f5efe4"></div><span class="swatch-name">Warm 100</span><span class="swatch-hex">#f5efe4</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#e8d9c4"></div><span class="swatch-name">Warm 200</span><span class="swatch-hex">#e8d9c4</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#737373"></div><span class="swatch-name">Gray 500</span><span class="swatch-hex">#737373</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#404040"></div><span class="swatch-name">Gray 700</span><span class="swatch-hex">#404040</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#171717"></div><span class="swatch-name">Gray 900</span><span class="swatch-hex">#171717</span></div>
+        </div>
+
+        <!-- Status colors -->
+        <p class="palette-group-title mt-6">Status Colors</p>
+        <div class="palette-swatches">
+          <div class="swatch"><div class="swatch-circle" style="background:#d1fae5"></div><span class="swatch-name">Green 100</span><span class="swatch-hex">#d1fae5</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#059669"></div><span class="swatch-name">Green 600</span><span class="swatch-hex">#059669</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#fef3c7"></div><span class="swatch-name">Amber 100</span><span class="swatch-hex">#fef3c7</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#f59e0b"></div><span class="swatch-name">Amber 400</span><span class="swatch-hex">#f59e0b</span></div>
+          <div class="swatch"><div class="swatch-circle" style="background:#d97706"></div><span class="swatch-name">Amber 600</span><span class="swatch-hex">#d97706</span></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Usage guide -->
+        <p class="palette-group-title">Color Usage Guide</p>
+        <div class="color-usage-grid">
+          <div class="color-usage-card">
+            <div class="color-usage-swatch" style="background:linear-gradient(135deg,#7c3aed,#a87fda)"></div>
+            <div class="color-usage-body">
+              <div class="color-usage-label">Purple</div>
+              <div class="color-usage-desc">Primary actions, headings, links, logo</div>
+            </div>
+          </div>
+          <div class="color-usage-card">
+            <div class="color-usage-swatch" style="background:linear-gradient(135deg,#0d8080,#2bb5b5)"></div>
+            <div class="color-usage-body">
+              <div class="color-usage-label">Teal</div>
+              <div class="color-usage-desc">Dates, labels, secondary CTAs, accents</div>
+            </div>
+          </div>
+          <div class="color-usage-card">
+            <div class="color-usage-swatch" style="background:#fdfaf6;border-top:3px solid #e8d9c4"></div>
+            <div class="color-usage-body">
+              <div class="color-usage-label">Warm White</div>
+              <div class="color-usage-desc">Page background, card backgrounds</div>
+            </div>
+          </div>
+          <div class="color-usage-card">
+            <div class="color-usage-swatch" style="background:linear-gradient(135deg,#d1fae5,#059669)"></div>
+            <div class="color-usage-body">
+              <div class="color-usage-label">Green</div>
+              <div class="color-usage-desc">"Learned" status badge only</div>
+            </div>
+          </div>
+          <div class="color-usage-card">
+            <div class="color-usage-swatch" style="background:linear-gradient(135deg,#fef3c7,#f59e0b)"></div>
+            <div class="color-usage-body">
+              <div class="color-usage-label">Amber</div>
+              <div class="color-usage-desc">"Learning" status badge only</div>
+            </div>
+          </div>
+          <div class="color-usage-card">
+            <div class="color-usage-swatch" style="background:#171717"></div>
+            <div class="color-usage-body">
+              <div class="color-usage-label">Near Black</div>
+              <div class="color-usage-desc">Headings, song titles, high-emphasis text</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           TYPOGRAPHY
+      ══════════════════════════════════════ -->
+      <section class="section" id="typography">
+        <p class="section-label">Identity</p>
+        <h2 class="section-title">Typography</h2>
+        <p class="section-desc">
+          Two fonts only. Fredoka One brings warmth and personality to headlines. Nunito is
+          clean and round — easy to read at small sizes and highly legible for children.
+        </p>
+
+        <!-- Font cards -->
+        <div class="grid-2 mb-6">
+          <div class="font-card">
+            <div class="font-card-header">
+              <div class="font-card-name" style="font-family:var(--font-display)">Fredoka One</div>
+              <div class="font-card-role">Display / Headings — weight 400 (only weight available)</div>
+            </div>
+            <div class="font-card-body">
+              <div class="font-card-alpha display">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm</div>
+              <div class="font-card-nums display">0 1 2 3 4 5 6 7 8 9</div>
+            </div>
+          </div>
+          <div class="font-card">
+            <div class="font-card-header">
+              <div class="font-card-name" style="font-family:var(--font-body);font-weight:800">Nunito</div>
+              <div class="font-card-role">Body / UI — weights 400, 500, 600, 700, 800</div>
+            </div>
+            <div class="font-card-body">
+              <div class="font-card-alpha body">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm</div>
+              <div class="font-card-nums body">0 1 2 3 4 5 6 7 8 9</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type scale -->
+        <div class="type-specimen">
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Display 1</div>
+              <div class="type-meta-spec">Fredoka One<br/>3rem / 1.0<br/>Hero only</div>
+            </div>
+            <div class="type-sample type-display-1">Maya's Piano Journey</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Display 2</div>
+              <div class="type-meta-spec">Fredoka One<br/>2.25rem / 1.1<br/>Page titles</div>
+            </div>
+            <div class="type-sample type-display-2">Songs I Can Play</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Display 3</div>
+              <div class="type-meta-spec">Fredoka One<br/>1.875rem / 1.2<br/>Section heads</div>
+            </div>
+            <div class="type-sample type-display-3">My Milestones</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Heading</div>
+              <div class="type-meta-spec">Nunito 800<br/>1.5rem / 1.3<br/>Card titles</div>
+            </div>
+            <div class="type-sample type-heading">First Performance!</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Subheading</div>
+              <div class="type-meta-spec">Nunito 700<br/>1.25rem / 1.4<br/>Sub-sections</div>
+            </div>
+            <div class="type-sample type-subheading">Favorite Composers</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Body Large</div>
+              <div class="type-meta-spec">Nunito 400<br/>1.125rem / 1.65<br/>Intro paragraphs</div>
+            </div>
+            <div class="type-sample type-body-lg">Maya started piano lessons in October 2025 and hasn't stopped smiling since.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Body</div>
+              <div class="type-meta-spec">Nunito 400<br/>1rem / 1.65<br/>General content</div>
+            </div>
+            <div class="type-sample type-body">She practices five days a week and has already learned twelve songs, from Twinkle Twinkle to a simplified Für Elise.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Body Small</div>
+              <div class="type-meta-spec">Nunito 400<br/>0.875rem / 1.65<br/>Metadata, captions</div>
+            </div>
+            <div class="type-sample type-body-sm">Learned November 2025 · Traditional</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">
+              <div class="type-meta-name">Label</div>
+              <div class="type-meta-spec">Nunito 700<br/>0.75rem / allcaps<br/>Nav, badges, eyebrows</div>
+            </div>
+            <div class="type-sample type-label">Piano Journey · Since Oct 2025</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           VOICE & TONE
+      ══════════════════════════════════════ -->
+      <section class="section" id="voice">
+        <p class="section-label">Identity</p>
+        <h2 class="section-title">Voice &amp; Tone</h2>
+        <p class="section-desc">
+          Written by a proud parent for family and close friends. Warm, celebratory,
+          personal — never clinical or corporate.
+        </p>
+
+        <div class="voice-grid">
+          <div class="voice-card voice-do">
+            <div class="voice-card-title">Do</div>
+            <ul class="voice-list">
+              <li>Write in first-person from the parent's perspective ("Maya played for grandma…")</li>
+              <li>Celebrate small wins enthusiastically ("She finally nailed that tricky left-hand part!")</li>
+              <li>Use friendly, informal language with correct grammar</li>
+              <li>Keep milestone entries short: 2–4 sentences max</li>
+              <li>Use exclamation points sparingly for genuine moments of joy</li>
+              <li>Link to the Instagram video when mentioning a specific performance</li>
+            </ul>
+          </div>
+          <div class="voice-card voice-dont">
+            <div class="voice-card-title">Don't</div>
+            <ul class="voice-list">
+              <li>Share Maya's full name, school, location, or any identifying details</li>
+              <li>Use overly formal or educational language ("The student demonstrated proficiency…")</li>
+              <li>Over-hype every entry — save excitement for genuine milestones</li>
+              <li>Write long paragraphs; this is a scrapbook, not a blog essay</li>
+              <li>Add marketing or promotional language</li>
+              <li>Include hashtags, SEO keywords, or tracking snippets</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="palette-group-title">Example Milestone Entries</p>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);max-width:600px;">
+          <div style="background:#fff;border:1px solid var(--color-warm-100);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);">
+            <div style="font-size:var(--text-xs);font-weight:700;color:var(--color-green-600);margin-bottom:4px;">Good example</div>
+            <div style="font-size:var(--text-sm);color:var(--color-neutral-700);line-height:1.7;">"Maya played Für Elise for grandma and grandpa over video call today. She only stumbled once on the repeat and then laughed it off and started again. They cried — in the best way. <a href="#" style="color:var(--color-purple-600);">Watch on Instagram →</a>"</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--color-warm-100);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);">
+            <div style="font-size:var(--text-xs);font-weight:700;color:#dc2626;margin-bottom:4px;">Avoid</div>
+            <div style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:1.7;">"Maya Johnson, age 6, a student at Riverside Elementary in Austin TX, successfully completed a rendition of Für Elise by Ludwig van Beethoven during a FaceTime session with her paternal grandparents on March 10, 2026."</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           SPACING
+      ══════════════════════════════════════ -->
+      <section class="section" id="spacing">
+        <p class="section-label">Tokens</p>
+        <h2 class="section-title">Spacing Scale</h2>
+        <p class="section-desc">All spacing uses a base-4 scale. Use these values for margins, paddings, and gaps.</p>
+
+        <div class="spacing-row">
+          <div class="spacing-block"><div class="spacing-rect" style="height:4px"></div><span class="spacing-label">space-1<br/>4px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:8px"></div><span class="spacing-label">space-2<br/>8px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:12px"></div><span class="spacing-label">space-3<br/>12px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:16px"></div><span class="spacing-label">space-4<br/>16px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:24px"></div><span class="spacing-label">space-6<br/>24px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:32px"></div><span class="spacing-label">space-8<br/>32px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:40px"></div><span class="spacing-label">space-10<br/>40px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:48px"></div><span class="spacing-label">space-12<br/>48px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:64px"></div><span class="spacing-label">space-16<br/>64px</span></div>
+          <div class="spacing-block"><div class="spacing-rect" style="height:80px"></div><span class="spacing-label">space-20<br/>80px</span></div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           BORDER RADIUS
+      ══════════════════════════════════════ -->
+      <section class="section" id="radius">
+        <p class="section-label">Tokens</p>
+        <h2 class="section-title">Border Radius</h2>
+        <p class="section-desc">Rounded corners reinforce the friendly, approachable feel. Avoid sharp 0px corners.</p>
+
+        <div class="radius-row">
+          <div class="radius-block"><div class="radius-box" style="border-radius:6px"></div><span class="radius-label">radius-sm<br/>6px<br/>Badges, tags</span></div>
+          <div class="radius-block"><div class="radius-box" style="border-radius:12px"></div><span class="radius-label">radius-md<br/>12px<br/>Inputs, icons</span></div>
+          <div class="radius-block"><div class="radius-box" style="border-radius:20px"></div><span class="radius-label">radius-lg<br/>20px<br/>Cards, panels</span></div>
+          <div class="radius-block"><div class="radius-box" style="border-radius:32px"></div><span class="radius-label">radius-xl<br/>32px<br/>Hero, banners</span></div>
+          <div class="radius-block"><div class="radius-box" style="border-radius:9999px"></div><span class="radius-label">radius-full<br/>9999px<br/>Pills, avatars</span></div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           SHADOWS
+      ══════════════════════════════════════ -->
+      <section class="section" id="shadows">
+        <p class="section-label">Tokens</p>
+        <h2 class="section-title">Shadows</h2>
+        <p class="section-desc">Soft, low-contrast shadows keep the interface light and airy.</p>
+
+        <div class="flex gap-6 flex-wrap items-start mt-4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-3);">
+            <div style="width:120px;height:80px;background:#fff;border-radius:var(--radius-lg);box-shadow:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.05)"></div>
+            <span class="spacing-label" style="text-align:center;">shadow-sm<br/>Resting cards</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-3);">
+            <div style="width:120px;height:80px;background:#fff;border-radius:var(--radius-lg);box-shadow:0 4px 12px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.05)"></div>
+            <span class="spacing-label" style="text-align:center;">shadow-md<br/>Hover state</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-3);">
+            <div style="width:120px;height:80px;background:#fff;border-radius:var(--radius-lg);box-shadow:0 10px 30px rgba(0,0,0,0.10),0 4px 10px rgba(0,0,0,0.06)"></div>
+            <span class="spacing-label" style="text-align:center;">shadow-lg<br/>Modals, dropdowns</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-3);">
+            <div style="width:120px;height:80px;background:#fff;border-radius:var(--radius-lg);box-shadow:0 4px 14px rgba(124,58,237,0.35)"></div>
+            <span class="spacing-label" style="text-align:center;">shadow-purple<br/>Primary buttons</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-3);">
+            <div style="width:120px;height:80px;background:#fff;border-radius:var(--radius-lg);box-shadow:0 4px 14px rgba(43,181,181,0.30)"></div>
+            <span class="spacing-label" style="text-align:center;">shadow-teal<br/>Teal buttons</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           BUTTONS
+      ══════════════════════════════════════ -->
+      <section class="section" id="buttons">
+        <p class="section-label">Components</p>
+        <h2 class="section-title">Buttons</h2>
+        <p class="section-desc">Pill-shaped buttons with generous padding. Always use <span class="tag">font-weight: 700</span> to keep button text legible.</p>
+
+        <p class="palette-group-title">Variants</p>
+        <div class="btn-group mb-6">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-teal">Teal</button>
+          <button class="btn btn-outline">Outline</button>
+          <button class="btn btn-ghost">Ghost</button>
+        </div>
+
+        <p class="palette-group-title">With icons</p>
+        <div class="btn-group mb-6">
+          <button class="btn btn-primary">🎹 Start Playing</button>
+          <button class="btn btn-teal">📸 View on Instagram</button>
+          <button class="btn btn-outline">📋 See All Songs</button>
+        </div>
+
+        <p class="palette-group-title">Sizes</p>
+        <div class="btn-group">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <p style="font-size:var(--text-sm);color:var(--color-neutral-500);">
+          <strong style="color:var(--color-neutral-700);">Usage rules:</strong>
+          Use <strong>Primary</strong> for the single most important action per page/section.
+          Use <strong>Teal</strong> for secondary actions or Instagram-related links.
+          Use <strong>Outline / Ghost</strong> for navigation-style links ("See all →").
+          Never place two Primary buttons side-by-side.
+        </p>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           BADGES
+      ══════════════════════════════════════ -->
+      <section class="section" id="badges">
+        <p class="section-label">Components</p>
+        <h2 class="section-title">Badges &amp; Status Tags</h2>
+        <p class="section-desc">Used on song cards to indicate learning status. Green = learned, Amber = currently learning.</p>
+
+        <div class="flex gap-3 flex-wrap mt-4 items-center">
+          <span class="badge badge-learned">Learned</span>
+          <span class="badge badge-learning">Learning</span>
+          <span class="badge badge-purple">Milestone</span>
+          <span class="badge badge-teal">New</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="palette-group-title">In context — Song list</p>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);max-width:400px;">
+          <div class="song-card">
+            <div class="song-card-icon">🎵</div>
+            <div class="song-card-info">
+              <div class="song-card-title">Twinkle Twinkle Little Star</div>
+              <div class="song-card-composer">Traditional · Nov 2025</div>
+            </div>
+            <span class="badge badge-learned">Learned</span>
+          </div>
+          <div class="song-card">
+            <div class="song-card-icon">🎶</div>
+            <div class="song-card-info">
+              <div class="song-card-title">Für Elise (intro)</div>
+              <div class="song-card-composer">Beethoven</div>
+            </div>
+            <span class="badge badge-learning">Learning</span>
+          </div>
+          <div class="song-card">
+            <div class="song-card-icon">🎹</div>
+            <div class="song-card-info">
+              <div class="song-card-title">Happy Birthday</div>
+              <div class="song-card-composer">Traditional · Dec 2025</div>
+            </div>
+            <span class="badge badge-learned">Learned</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           CARDS
+      ══════════════════════════════════════ -->
+      <section class="section" id="cards">
+        <p class="section-label">Components</p>
+        <h2 class="section-title">Cards</h2>
+        <p class="section-desc">White background, <span class="tag">radius-lg</span>, subtle border, <span class="tag">shadow-sm</span> at rest. Hover lifts with <span class="tag">shadow-md</span>.</p>
+
+        <div class="grid-3 mt-4">
+          <!-- Milestone preview card -->
+          <div class="card" style="transition:box-shadow 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-2px)'"
+               onmouseout="this.style.boxShadow='var(--shadow-sm)';this.style.transform='none'">
+            <div class="card-body">
+              <div style="font-size:var(--text-xs);font-weight:700;color:var(--color-teal-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Mar 10, 2026</div>
+              <div style="font-weight:800;font-size:var(--text-base);color:var(--color-neutral-900);margin-bottom:8px;">First Performance!</div>
+              <div style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:1.6;">Maya played for grandma and grandpa over video call. She was so proud.</div>
+              <div style="margin-top:12px;"><a href="#" style="font-size:var(--text-sm);font-weight:700;color:var(--color-purple-600);text-decoration:none;">Watch on Instagram →</a></div>
+            </div>
+          </div>
+
+          <!-- About fun-fact card -->
+          <div class="card" style="transition:box-shadow 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-2px)'"
+               onmouseout="this.style.boxShadow='var(--shadow-sm)';this.style.transform='none'">
+            <div style="height:6px;background:linear-gradient(90deg,var(--color-purple-400),var(--color-teal-400))"></div>
+            <div class="card-body">
+              <div style="font-size:1.75rem;margin-bottom:8px;">🍎</div>
+              <div style="font-weight:800;font-size:var(--text-base);color:var(--color-neutral-900);margin-bottom:8px;">Practice Snack</div>
+              <div style="font-size:var(--text-sm);color:var(--color-neutral-500);">Apple slices — always. Non-negotiable.</div>
+            </div>
+          </div>
+
+          <!-- Stat card -->
+          <div class="card" style="transition:box-shadow 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-2px)'"
+               onmouseout="this.style.boxShadow='var(--shadow-sm)';this.style.transform='none'">
+            <div class="card-body" style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:3.5rem;color:var(--color-purple-600);line-height:1;">12</div>
+              <div style="font-size:var(--text-sm);font-weight:700;color:var(--color-neutral-500);margin-top:4px;">Songs Learned</div>
+              <div style="margin-top:12px;"><span class="badge badge-purple">+2 this month</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Instagram banner -->
+        <p class="palette-group-title">Instagram Banner</p>
+        <a class="ig-banner mt-4" href="#" style="display:flex;">
+          <span class="ig-banner-icon">📸</span>
+          <div class="ig-banner-text">
+            <div class="ig-banner-handle">@maya.on.keys</div>
+            <div class="ig-banner-sub">Watch Maya play on Instagram</div>
+          </div>
+          <span class="ig-banner-arrow">→</span>
+        </a>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           TIMELINE
+      ══════════════════════════════════════ -->
+      <section class="section" id="timeline">
+        <p class="section-label">Components</p>
+        <h2 class="section-title">Milestone Timeline</h2>
+        <p class="section-desc">Newest entry first. Vertical connector line uses <span class="tag">purple-100</span>; dot is <span class="tag">purple-400</span> with a <span class="tag">purple-200</span> ring.</p>
+
+        <div style="max-width:500px;margin-top:var(--space-6);">
+          <div class="milestone-entry">
+            <div class="milestone-line">
+              <div class="milestone-dot"></div>
+              <div class="milestone-line-bar"></div>
+            </div>
+            <div class="milestone-body">
+              <div class="milestone-date">March 10, 2026</div>
+              <div class="milestone-title">First Family Performance</div>
+              <div class="milestone-desc">Maya played Für Elise for grandma and grandpa over video call. She stumbled once, laughed, and started again from the top. They cried happy tears.</div>
+            </div>
+          </div>
+
+          <div class="milestone-entry">
+            <div class="milestone-line">
+              <div class="milestone-dot"></div>
+              <div class="milestone-line-bar"></div>
+            </div>
+            <div class="milestone-body">
+              <div class="milestone-date">January 5, 2026</div>
+              <div class="milestone-title">Two Hands at Last!</div>
+              <div class="milestone-desc">Today Maya played Happy Birthday with both hands for the first time without stopping. She's been working on it for three weeks.</div>
+            </div>
+          </div>
+
+          <div class="milestone-entry">
+            <div class="milestone-line">
+              <div class="milestone-dot"></div>
+            </div>
+            <div class="milestone-body">
+              <div class="milestone-date">October 14, 2025</div>
+              <div class="milestone-title">Day One</div>
+              <div class="milestone-desc">First lesson with Ms. Rivera. Maya came home and immediately played Twinkle Twinkle all the way through. We weren't expecting that.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           STATS
+      ══════════════════════════════════════ -->
+      <section class="section" id="stats">
+        <p class="section-label">Components</p>
+        <h2 class="section-title">Stats Tiles</h2>
+        <p class="section-desc">Displayed on the home page hero. Numbers use Fredoka One; labels use Nunito 600.</p>
+
+        <div class="grid-3 mt-4" style="max-width:540px;">
+          <div class="stat-tile stat-purple">
+            <div class="stat-tile-num">6</div>
+            <div class="stat-tile-label">Months Playing</div>
+          </div>
+          <div class="stat-tile stat-teal">
+            <div class="stat-tile-num">12</div>
+            <div class="stat-tile-label">Songs Learned</div>
+          </div>
+          <div class="stat-tile stat-amber">
+            <div class="stat-tile-num">5×</div>
+            <div class="stat-tile-label">Practice / Week</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           ICONOGRAPHY
+      ══════════════════════════════════════ -->
+      <section class="section" id="icons">
+        <p class="section-label">Components</p>
+        <h2 class="section-title">Iconography</h2>
+        <p class="section-desc">
+          Use native emoji for all icons — no icon library required. Keeps the bundle minimal
+          and matches the child-friendly aesthetic. Do not mix emoji with SVG icon sets.
+        </p>
+
+        <div class="icon-grid mt-4">
+          <div class="icon-item"><span>🎹</span><span class="icon-item-label">Piano / Site</span></div>
+          <div class="icon-item"><span>🎵</span><span class="icon-item-label">Song</span></div>
+          <div class="icon-item"><span>🎶</span><span class="icon-item-label">Learning</span></div>
+          <div class="icon-item"><span>⭐</span><span class="icon-item-label">Milestone</span></div>
+          <div class="icon-item"><span>📸</span><span class="icon-item-label">Instagram</span></div>
+          <div class="icon-item"><span>🎂</span><span class="icon-item-label">Birthday</span></div>
+          <div class="icon-item"><span>🏆</span><span class="icon-item-label">Achievement</span></div>
+          <div class="icon-item"><span>📅</span><span class="icon-item-label">Date</span></div>
+          <div class="icon-item"><span>🎼</span><span class="icon-item-label">Composer</span></div>
+          <div class="icon-item"><span>🍎</span><span class="icon-item-label">Snack</span></div>
+          <div class="icon-item"><span>💜</span><span class="icon-item-label">Favorite</span></div>
+          <div class="icon-item"><span>▶️</span><span class="icon-item-label">Play video</span></div>
+        </div>
+
+        <p style="margin-top:var(--space-6);font-size:var(--text-sm);color:var(--color-neutral-500);">
+          Wrap emoji in <span class="tag">&lt;span aria-hidden="true"&gt;</span> when decorative, or
+          <span class="tag">&lt;span role="img" aria-label="piano"&gt;</span> when the icon carries meaning.
+        </p>
+      </section>
+
+
+      <!-- ══════════════════════════════════════
+           HERO PREVIEW
+      ══════════════════════════════════════ -->
+      <section class="section" id="hero">
+        <p class="section-label">Preview</p>
+        <h2 class="section-title">Hero Section Preview</h2>
+        <p class="section-desc">A compositional preview showing how colors, type, and components work together on the home page.</p>
+
+        <div class="hero-preview">
+          <span class="hero-preview-tagline">🎹 Piano Journey</span>
+          <h2>Maya's <span>Piano</span> Journey</h2>
+          <p>One song at a time, one proud smile at a time. Follow along as Maya learns to play!</p>
+
+          <div class="btn-group" style="justify-content:center;">
+            <a class="btn btn-primary btn-lg" href="#">See Milestones</a>
+            <a class="btn btn-outline btn-lg" href="#">Songs I Know</a>
+          </div>
+
+          <div class="hero-preview-stats">
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">6</div>
+              <div class="hero-stat-label">Months Playing</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">12</div>
+              <div class="hero-stat-label">Songs Learned</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">5×</div>
+              <div class="hero-stat-label">Per Week</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="palette-group-title">Accessibility Reminders</p>
+        <ul style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:2;padding-left:1.25rem;">
+          <li>All text on colored backgrounds must meet <strong style="color:var(--color-neutral-700)">WCAG AA 4.5:1</strong> contrast ratio (3:1 for large text).</li>
+          <li>All images must include descriptive <strong style="color:var(--color-neutral-700)">alt text</strong>. Decorative images use <strong style="color:var(--color-neutral-700)">alt=""</strong>.</li>
+          <li>Interactive elements need visible <strong style="color:var(--color-neutral-700)">focus rings</strong> — use <span class="tag">box-shadow: 0 0 0 3px purple-50</span>.</li>
+          <li>Use <strong style="color:var(--color-neutral-700)">semantic HTML</strong>: <span class="tag">&lt;main&gt;</span>, <span class="tag">&lt;nav&gt;</span>, <span class="tag">&lt;article&gt;</span>, <span class="tag">&lt;time datetime=""&gt;</span>.</li>
+          <li>Emoji icons must have <span class="tag">aria-hidden="true"</span> or a meaningful <span class="tag">aria-label</span>.</li>
+          <li>No motion-based interactions beyond subtle <strong style="color:var(--color-neutral-700)">fade-in</strong> — respect <span class="tag">prefers-reduced-motion</span>.</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="page-footer">
+    <span>Maya on Keys</span> — Brand Guidelines v1.0 · 2026 · For family &amp; close friends only
+  </footer>
+
+</body>
+</html>
