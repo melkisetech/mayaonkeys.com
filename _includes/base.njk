@@ -105,6 +105,7 @@
       var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
       if (months < 0) months = 0;
       el.textContent = months;
+      el.setAttribute("aria-label", months + " months playing");
     })();
   </script>
 
