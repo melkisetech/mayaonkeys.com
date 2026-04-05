@@ -1,2 +1,0 @@
-[     588ms] [LOG] [11ty][10:32:42.987 UTC] Connected @ http://localhost:8080/.11ty/reload-client.js:20
-[     698ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8080/favicon.ico:0

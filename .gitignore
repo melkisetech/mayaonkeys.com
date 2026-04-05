@@ -1,3 +1,20 @@
 node_modules/
 _site/
 public/css/
+
+# Playwright MCP artifacts
+.playwright-mcp/
+
+# Test screenshots
+test-*.png
+test-*.jpg
+
+# macOS
+.DS_Store
+
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
