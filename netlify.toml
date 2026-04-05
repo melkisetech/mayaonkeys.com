@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "mkdir -p public/css && npm run build"
   publish = "_site"
 
 [build.environment]
@@ -7,7 +7,7 @@
 
 # Serve admin SPA correctly
 [[redirects]]
-  from = "/admin/"
+  from = "/admin/*"
   to = "/admin/index.html"
   status = 200
 
