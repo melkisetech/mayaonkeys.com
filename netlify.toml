@@ -10,10 +10,3 @@
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
-
-# Netlify Identity callback redirect (required for email confirmation flows)
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
