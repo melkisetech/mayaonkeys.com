@@ -15,11 +15,13 @@ A personal, family-friendly website documenting a young girl's piano learning jo
 - **Static site generator**: [Eleventy (11ty)](https://www.11ty.dev/)
 - **Templating**: Nunjucks
 - **Styling**: Tailwind CSS
-- **Deployment**: GitHub Actions → GitHub Pages
+- **CMS**: [Decap CMS](https://decapcms.org/) (Git-based, served at `/admin/`)
+- **Deployment**: Netlify (free tier)
+- **Authentication**: Netlify Identity + Git Gateway
 - **GitHub username**: `melkisetech`
-- **Initial URL**: `melkisetech.github.io/mayaonkeys.com`
+- **Initial URL**: Auto-assigned Netlify subdomain (e.g. `mayaonkeys.netlify.app`) — custom domain can be wired later via Netlify settings
 - **Custom domain**: Not configured in v1 (can be added later)
-- **11ty `pathPrefix`**: `/mayaonkeys.com/`
+- **11ty `pathPrefix`**: Not required (Netlify deploys at root `/`)
 
 > Keep dependencies minimal. Pure static output — no server-side rendering, no API routes.
 
@@ -99,23 +101,27 @@ A personal, family-friendly website documenting a young girl's piano learning jo
 
 ### `_data/songs.json`
 
+> **Schema change from original spec**: The root array is wrapped in an object so Decap CMS's list widget can bind to the `songs` key. Templates reference `songs.songs` instead of `songs`.
+
 ```json
-[
-  {
-    "id": "1",
-    "title": "Twinkle Twinkle Little Star",
-    "composer": "Traditional",
-    "status": "learned",
-    "dateLearned": "2025-11"
-  },
-  {
-    "id": "2",
-    "title": "Für Elise (intro)",
-    "composer": "Beethoven",
-    "status": "learning",
-    "dateLearned": null
-  }
-]
+{
+  "songs": [
+    {
+      "id": "1",
+      "title": "Twinkle Twinkle Little Star",
+      "composer": "Traditional",
+      "status": "learned",
+      "dateLearned": "2025-11"
+    },
+    {
+      "id": "2",
+      "title": "Für Elise (intro)",
+      "composer": "Beethoven",
+      "status": "learning",
+      "dateLearned": null
+    }
+  ]
+}
 ```
 
 ### `content/milestones/*.md`
@@ -154,15 +160,18 @@ Watch the video on [Instagram](https://instagram.com/p/...).
 
 ## Content Management
 
-The parent (non-developer) updates content by editing files directly in the GitHub repo:
+The parent (non-developer) updates content via the **Decap CMS admin UI** at `/admin/`. Login is by email and password — no GitHub account required.
 
-| Content | Method |
-|---|---|
-| Bio & fun facts | Edit `_data/config.json` |
-| Stats (practice days) | Edit `_data/config.json` |
-| Add a new song | Edit `_data/songs.json` |
-| Add a milestone | Add a `.md` file to `content/milestones/` |
-| Update Instagram feed widget | Edit `lightwidgetEmbedCode` in `_data/config.json` |
+| Content | CMS Collection | Underlying File |
+|---|---|---|
+| Bio & fun facts | Settings → General | `_data/config.json` |
+| Stats (practice days) | Settings → General | `_data/config.json` |
+| Add / edit a song | Songs → Song List | `_data/songs.json` |
+| Add a milestone | Milestones → New entry | `content/milestones/YYYY-MM-DD-slug.md` |
+| Update Instagram feed widget | Settings → General | `_data/config.json` |
+| Upload photos | Media library (built into CMS) | `public/images/` |
+
+> Direct GitHub file editing remains possible as a fallback for developers, but the CMS UI is the intended method for day-to-day updates.
 
 ---
 
@@ -170,9 +179,12 @@ The parent (non-developer) updates content by editing files directly in the GitH
 
 ```
 /
+├── admin/
+│   ├── index.html          # Decap CMS UI entry point
+│   └── config.yml          # CMS schema (collections, backend, media)
 ├── _data/
 │   ├── config.json
-│   └── songs.json
+│   └── songs.json          # Root array wrapped in object: { "songs": [...] }
 ├── content/
 │   └── milestones/         # .md files, one per milestone
 ├── _includes/
@@ -188,31 +200,147 @@ The parent (non-developer) updates content by editing files directly in the GitH
 │   └── videos.njk
 ├── public/
 │   └── images/
-├── .eleventy.js            # 11ty config (pathPrefix, collections, etc.)
+├── .eleventy.js            # 11ty config — includes passthrough copy for /admin
 ├── tailwind.config.js
+├── netlify.toml            # Netlify build settings and Identity redirect rules
 └── package.json
+```
+
+> **`songs.json` schema change**: The bare root array (`[...]`) must be wrapped in an object (`{ "songs": [...] }`) for Decap CMS's list widget to bind correctly. Update the songs template to read `songs.songs` instead of `songs`.
+
+---
+
+## Decap CMS Configuration
+
+### `admin/index.html`
+
+Minimal loader that pulls the Decap CMS bundle from CDN:
+
+```html
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Maya's Site Admin</title>
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body>
+</html>
+```
+
+### `admin/config.yml`
+
+```yaml
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General"
+        file: "_data/config.json"
+        fields:
+          - { label: "Maya's Name", name: "name", widget: "string" }
+          - { label: "Start Date", name: "startDate", widget: "string", hint: "Format: YYYY-MM" }
+          - { label: "Practice Days Per Week", name: "practicePerWeek", widget: "number" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Instagram Handle", name: "instagramHandle", widget: "string" }
+          - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+          - { label: "LightWidget Embed Code", name: "lightwidgetEmbedCode", widget: "text" }
+          - label: "Fun Facts"
+            name: "funFacts"
+            widget: "object"
+            fields:
+              - { label: "Favorite Song", name: "favoriteSong", widget: "string" }
+              - { label: "Favorite Composer", name: "favoriteComposer", widget: "string" }
+              - { label: "Practice Snack", name: "practiceSnack", widget: "string" }
+
+  - name: "songs"
+    label: "Songs"
+    files:
+      - name: "song_list"
+        label: "Song List"
+        file: "_data/songs.json"
+        fields:
+          - label: "Songs"
+            name: "songs"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Composer", name: "composer", widget: "string" }
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options: ["learned", "learning"]
+              - { label: "Date Learned", name: "dateLearned", widget: "string", required: false, hint: "Format: YYYY-MM, leave blank if still learning" }
+
+  - name: "milestones"
+    label: "Milestones"
+    folder: "content/milestones"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+```
+
+### `netlify.toml`
+
+Required for Netlify Identity redirect and build settings:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[[redirects]]
+  from = "/admin/"
+  to = "/admin/index.html"
+  status = 200
+```
+
+### 11ty passthrough copy
+
+Add to `.eleventy.js` so the admin folder is included in the build output:
+
+```js
+eleventyConfig.addPassthroughCopy("admin");
 ```
 
 ---
 
 ## Deployment
 
-- **Platform**: GitHub Pages (`melkisetech.github.io/mayaonkeys.com`)
-- **CI/CD**: GitHub Actions — build with 11ty on push to `main`, deploy to `gh-pages` branch
-- **Custom domain**: Wire up later via GitHub Pages settings (no code changes needed beyond removing `pathPrefix`)
+- **Platform**: Netlify (free tier) — connects directly to the `melkisetech/mayaonkeys.com` GitHub repo
+- **Build command**: `npx @11ty/eleventy` (or `npm run build`)
+- **Publish directory**: `_site`
+- **CI/CD**: Netlify auto-builds on every push to `main`; no GitHub Actions workflow needed for deployment
+- **Identity**: Enable Netlify Identity (free tier) → invite the parent via email → they set a password
+- **Git Gateway**: Enable under Netlify → Identity → Services → Git Gateway (allows the CMS to commit on behalf of the user)
+- **Custom domain**: Wire up later via Netlify → Domain settings (no code changes needed)
 
 ---
 
 ## Out of Scope (v1)
 
-- User authentication or login
+- User authentication or login (beyond CMS admin access)
 - Guestbook or comment system
 - Video hosting
 - Password protection
 - Multi-language support
 - PWA / offline support
 - Automated Instagram syncing
-- CMS UI (Decap CMS / Netlify CMS)
 
 ---
 
@@ -221,5 +349,4 @@ The parent (non-developer) updates content by editing files directly in the GitH
 - Practice tracker: visual goal board Maya can interact with
 - "Composer of the Month" spotlight section
 - Printable certificate generator ("I learned a new song!")
-- Optional Notion CMS integration
 - Dark mode
