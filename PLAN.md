@@ -32,10 +32,53 @@ Each step has a corresponding GitHub issue.
 
 ---
 
+## Pagination — Steps (added after initial build)
+
+Expected growth: ~1 song/week (hundreds over time), ~1 milestone/month.
+
+### Strategy
+- **Learned Songs**: year-based static pages at `/songs/{year}/` (one page per year)
+- **Currently Learning**: stays on main `/songs/` page, no pagination needed (small, transient)
+- **Milestones**: year groupings with anchors on a single `/milestones/` page (no URL split needed at current volume)
+
+### Data Architecture Decision
+Songs are migrated from `_data/songs.json` to individual markdown files under `content/songs/` — same pattern as milestones. Reasons:
+- Unlocks 11ty native collections and year-based pagination
+- Each song gets its own editor page in Decap CMS (vs. editing a raw JSON list)
+- Consistent architecture across all content types
+
+### Dependency Order
+```
+#30 Migrate songs to markdown
+  ├── #31 Update 11ty config (songs collection + year filter)
+  │     ├── #33 Year-based learned songs pages (/songs/{year}/)
+  │     │     └── #34 Update main /songs/ page (currently learning + year nav)
+  │     └── #35 Update homepage (use songs collection)
+  └── #32 Update Decap CMS config (songs folder collection)
+
+#36 Milestones year grouping  (independent)
+```
+
+### New Steps
+
+| # | Issue | Description |
+|---|-------|-------------|
+| 15 | [#30](https://github.com/melkisetech/mayaonkeys.com/issues/30) | Migrate songs from `songs.json` to individual markdown files |
+| 16 | [#31](https://github.com/melkisetech/mayaonkeys.com/issues/31) | Update 11ty config — songs collection and year-grouping filter |
+| 17 | [#32](https://github.com/melkisetech/mayaonkeys.com/issues/32) | Update Decap CMS config — songs folder collection |
+| 18 | [#33](https://github.com/melkisetech/mayaonkeys.com/issues/33) | Implement year-based static pages for learned songs |
+| 19 | [#34](https://github.com/melkisetech/mayaonkeys.com/issues/34) | Update main `/songs/` page — currently learning + year navigation |
+| 20 | [#35](https://github.com/melkisetech/mayaonkeys.com/issues/35) | Update homepage to use songs collection |
+| 21 | [#36](https://github.com/melkisetech/mayaonkeys.com/issues/36) | Add year grouping to milestones page |
+
+---
+
 ## Key Architectural Notes
 
 - `songs.json` root is wrapped in an object `{ "songs": [...] }` — templates reference `songs.songs`
+- ~~`songs.json`~~ **Superseded by steps 15–20**: songs now live as individual `.md` files in `content/songs/`; templates use `collections.songs`
 - `startDate` in `config.json` uses `YYYY-MM` format; months-playing is computed client-side
 - `admin/` folder must be added to 11ty passthrough copy so it appears in `_site/`
 - No individual milestone detail pages — list-only view on `/milestones`
+- No individual song detail pages — list/year-page view only
 - No full name, school, or location anywhere on the site

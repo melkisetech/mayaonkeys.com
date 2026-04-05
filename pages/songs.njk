@@ -5,6 +5,9 @@ permalink: /songs/
 ---
 
 {# ── Page header ───────────────────────────────────────── #}
+{% set learnedCount  = collections.songs | learnedSongs | length %}
+{% set learningCount = collections.songs | length - learnedCount %}
+
 <section class="bg-gradient-to-br from-brand-teal-50 to-brand-cream py-12 px-4 sm:px-6 text-center">
   <div class="max-w-2xl mx-auto">
     <p class="text-4xl mb-3" aria-hidden="true">🎵</p>
@@ -12,54 +15,56 @@ permalink: /songs/
       Songs I Can Play
     </h1>
     <p class="text-brand-dark/60 text-base sm:text-lg">
-      {{ songs.songs | learnedSongs | length }} learned · {{ songs.songs | length - (songs.songs | learnedSongs | length) }} in progress
+      {{ learnedCount }} learned · {{ learningCount }} in progress
     </p>
   </div>
 </section>
 
-{# ── Filter legend ─────────────────────────────────────── #}
-<section class="max-w-3xl mx-auto px-4 sm:px-6 mt-10">
-  <div class="flex items-center gap-4 text-sm mb-6 flex-wrap">
-    <span class="text-brand-dark/60 font-medium">Status:</span>
-    <span class="badge-learned">✓ Learned</span>
-    <span class="badge-learning">Learning</span>
-  </div>
+<section class="max-w-3xl mx-auto px-4 sm:px-6 mt-10 mb-10">
 
-  {# ── All songs grid ──────────────────────────────────── #}
-  {% set learnedList   = [] %}
-  {% set learningList  = [] %}
-
-  {% for s in songs.songs %}
-    {% if s.status == "learned" %}
-      {% set learnedList  = (learnedList.push(s), learnedList) %}
-    {% else %}
+  {# ── Currently Learning ───────────────────────────────── #}
+  {% set learningList = [] %}
+  {% for s in collections.songs %}
+    {% if s.data.status == "learning" %}
       {% set learningList = (learningList.push(s), learningList) %}
     {% endif %}
   {% endfor %}
 
-  {# Currently learning #}
   {% if learningList.length %}
     <h2 class="section-title mt-2">Currently Learning</h2>
     <p class="section-subtitle">Almost there!</p>
-    <div class="grid sm:grid-cols-2 gap-3 mb-10">
+    <div class="grid sm:grid-cols-2 gap-3 mb-12">
       {% for song in learningList %}
         {% include "song-card.njk" %}
       {% endfor %}
     </div>
   {% endif %}
 
-  {# Learned songs #}
-  {% if learnedList.length %}
+  {# ── Learned Songs — by year ──────────────────────────── #}
+  {% set yearGroups = collections.songs | learnedByYear %}
+
+  {% if yearGroups.length %}
     <h2 class="section-title">Learned Songs</h2>
-    <p class="section-subtitle">{{ learnedList.length }} song{% if learnedList.length != 1 %}s{% endif %} mastered 🎉</p>
-    <div class="grid sm:grid-cols-2 gap-3">
-      {% for song in learnedList %}
-        {% include "song-card.njk" %}
+    <p class="section-subtitle">{{ learnedCount }} song{% if learnedCount != 1 %}s{% endif %} mastered 🎉</p>
+    <ul class="mt-6 space-y-3 list-none">
+      {% for group in yearGroups %}
+        <li>
+          <a href="/songs/{{ group.year }}/"
+             class="flex items-center justify-between px-5 py-4 card hover:border-brand-teal-300 transition-colors group">
+            <span class="font-display font-bold text-brand-dark text-lg group-hover:text-brand-purple-700 transition-colors">
+              {{ group.year }}
+            </span>
+            <span class="text-sm text-brand-dark/50">
+              {{ group.count }} song{% if group.count != 1 %}s{% endif %} <span aria-hidden="true" class="ml-1 text-brand-teal-400">→</span>
+            </span>
+          </a>
+        </li>
       {% endfor %}
-    </div>
+    </ul>
   {% endif %}
 
-  {% if not songs.songs.length %}
+  {% if not collections.songs.length %}
     <p class="text-brand-dark/50 text-sm italic py-8 text-center">No songs added yet — check back soon!</p>
   {% endif %}
+
 </section>

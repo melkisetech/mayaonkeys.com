@@ -74,8 +74,7 @@ permalink: /
   </div>
 
   <div class="grid sm:grid-cols-2 gap-3">
-    {% for song in songs.songs | limit(4) %}
-      {% set song = song %}
+    {% for song in collections.songs | learnedSongs | limit(4) %}
       {% include "song-card.njk" %}
     {% endfor %}
   </div>

@@ -1,0 +1,63 @@
+---
+pagination:
+  data: collections.learnedYears
+  size: 1
+  alias: year
+permalink: /songs/{{ year }}/
+layout: base.njk
+eleventyComputed:
+  title: "Learned Songs — {{ year }}"
+---
+
+{# ── Page header ───────────────────────────────────────── #}
+<section class="bg-gradient-to-br from-brand-teal-50 to-brand-cream py-12 px-4 sm:px-6 text-center">
+  <div class="max-w-2xl mx-auto">
+    <p class="text-4xl mb-3" aria-hidden="true">🎵</p>
+    <h1 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-purple-700 mb-2">
+      {{ year }}
+    </h1>
+    <p class="text-brand-dark/60 text-base sm:text-lg mb-4">Songs learned this year</p>
+    <a href="/songs/" class="text-sm font-semibold text-brand-teal-400 hover:text-brand-teal-500 transition-colors">
+      ← Back to Songs
+    </a>
+  </div>
+</section>
+
+{# ── Songs grid ─────────────────────────────────────────── #}
+<section class="max-w-3xl mx-auto px-4 sm:px-6 mt-10 mb-10">
+  {% set yearSongs = [] %}
+  {% for song in collections.songs %}
+    {% if song.data.status == "learned" and (song.data.dateLearned | yearFromDate) == year %}
+      {% set yearSongs = (yearSongs.push(song), yearSongs) %}
+    {% endif %}
+  {% endfor %}
+
+  {% if yearSongs.length %}
+    <p class="text-brand-dark/50 text-sm mb-6">{{ yearSongs.length }} song{% if yearSongs.length != 1 %}s{% endif %} learned</p>
+    <div class="grid sm:grid-cols-2 gap-3">
+      {% for song in yearSongs %}
+        {% include "song-card.njk" %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-brand-dark/50 text-sm italic py-8 text-center">No songs for this year.</p>
+  {% endif %}
+</section>
+
+{# ── Year navigation ────────────────────────────────────── #}
+<nav class="max-w-3xl mx-auto px-4 sm:px-6 pb-10 flex justify-between text-sm font-semibold" aria-label="Year navigation">
+  <span>
+    {% if pagination.previousPageHref %}
+      <a href="{{ pagination.previousPageHref }}" class="text-brand-teal-400 hover:text-brand-teal-500 transition-colors">
+        ← {{ pagination.previousPageData }} (newer)
+      </a>
+    {% endif %}
+  </span>
+  <span>
+    {% if pagination.nextPageHref %}
+      <a href="{{ pagination.nextPageHref }}" class="text-brand-teal-400 hover:text-brand-teal-500 transition-colors">
+        {{ pagination.nextPageData }} (older) →
+      </a>
+    {% endif %}
+  </span>
+</nav>
