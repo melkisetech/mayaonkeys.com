@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Serve admin SPA correctly
+[[redirects]]
+  from = "/admin/"
+  to = "/admin/index.html"
+  status = 200
+
+# Netlify Identity callback redirect (required for email confirmation flows)
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"]}
