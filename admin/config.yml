@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General"
+        file: "_data/config.json"
+        fields:
+          - { label: "Maya's Name", name: "name", widget: "string" }
+          - { label: "Start Date", name: "startDate", widget: "string", hint: "Format: YYYY-MM (e.g. 2025-10)" }
+          - { label: "Practice Days Per Week", name: "practicePerWeek", widget: "number", value_type: "int", min: 1, max: 7 }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Instagram Handle", name: "instagramHandle", widget: "string", hint: "Without the @ symbol" }
+          - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+          - { label: "LightWidget Embed Code", name: "lightwidgetEmbedCode", widget: "text", required: false, hint: "Paste the full embed code from lightwidget.com" }
+          - label: "Fun Facts"
+            name: "funFacts"
+            widget: "object"
+            fields:
+              - { label: "Favourite Song", name: "favoriteSong", widget: "string" }
+              - { label: "Favourite Composer", name: "favoriteComposer", widget: "string" }
+              - { label: "Practice Snack", name: "practiceSnack", widget: "string" }
+
+  - name: "songs"
+    label: "Songs"
+    files:
+      - name: "song_list"
+        label: "Song List"
+        file: "_data/songs.json"
+        fields:
+          - label: "Songs"
+            name: "songs"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Unique identifier (e.g. 1, 2, 3)" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Composer / Source", name: "composer", widget: "string" }
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options:
+                  - { label: "Learned ✓", value: "learned" }
+                  - { label: "Learning…", value: "learning" }
+              - { label: "Date Learned", name: "dateLearned", widget: "string", required: false, hint: "Format: YYYY-MM — leave blank if still learning" }
+
+  - name: "milestones"
+    label: "Milestones"
+    folder: "content/milestones"
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Description", name: "body", widget: "markdown" }

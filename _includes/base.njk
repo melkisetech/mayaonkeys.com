@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{% if title %}{{ title }} — {% endif %}Maya's Piano Journey</title>
+  <meta name="description" content="Following Maya's piano learning adventure — songs, milestones, and musical moments." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Skip to main content (a11y) -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:text-brand-purple-500 focus:font-semibold">
+    Skip to main content
+  </a>
+
+  <!-- Navigation -->
+  <header class="bg-white border-b border-brand-purple-100 sticky top-0 z-40">
+    <nav class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16" aria-label="Main navigation">
+
+      <!-- Logo / Site title -->
+      <a href="/" class="flex items-center gap-2 font-display font-bold text-brand-purple-500 text-lg hover:text-brand-purple-600 transition-colors" aria-label="Maya's Piano Journey — home">
+        <span aria-hidden="true">🎹</span>
+        <span>Maya's Piano Journey</span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <ul class="hidden sm:flex items-center gap-1 list-none" role="list">
+        <li>
+          <a href="/" class="nav-link {% if page.url == '/' %}nav-link--active{% endif %}">Home</a>
+        </li>
+        <li>
+          <a href="/about/" class="nav-link {% if page.url == '/about/' %}nav-link--active{% endif %}">About</a>
+        </li>
+        <li>
+          <a href="/songs/" class="nav-link {% if page.url == '/songs/' %}nav-link--active{% endif %}">Songs</a>
+        </li>
+        <li>
+          <a href="/milestones/" class="nav-link {% if page.url == '/milestones/' %}nav-link--active{% endif %}">Milestones</a>
+        </li>
+        <li>
+          <a href="/videos/" class="nav-link {% if page.url == '/videos/' %}nav-link--active{% endif %}">Videos</a>
+        </li>
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu"
+        class="sm:hidden p-2 rounded-lg text-brand-dark hover:bg-brand-purple-50 transition-colors">
+        <svg id="icon-open"  class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <nav id="mobile-menu" class="hidden sm:hidden border-t border-brand-purple-100 bg-white" aria-label="Mobile navigation">
+      <ul class="max-w-5xl mx-auto px-4 py-3 flex flex-col gap-1 list-none" role="list">
+        <li><a href="/"            class="mobile-nav-link {% if page.url == '/' %}mobile-nav-link--active{% endif %}">Home</a></li>
+        <li><a href="/about/"      class="mobile-nav-link {% if page.url == '/about/' %}mobile-nav-link--active{% endif %}">About</a></li>
+        <li><a href="/songs/"      class="mobile-nav-link {% if page.url == '/songs/' %}mobile-nav-link--active{% endif %}">Songs</a></li>
+        <li><a href="/milestones/" class="mobile-nav-link {% if page.url == '/milestones/' %}mobile-nav-link--active{% endif %}">Milestones</a></li>
+        <li><a href="/videos/"     class="mobile-nav-link {% if page.url == '/videos/' %}mobile-nav-link--active{% endif %}">Videos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Page content -->
+  <main id="main-content" class="flex-1">
+    {{ content | safe }}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-brand-purple-100 mt-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-sm text-brand-dark/50">
+      <p class="font-display font-semibold text-brand-purple-400 mb-1">🎹 Maya's Piano Journey</p>
+      <p>A family archive of musical milestones.</p>
+      <p class="mt-3">
+        Follow along on Instagram:
+        <a href="{{ config.instagramUrl }}" target="_blank" rel="noopener noreferrer"
+           class="text-brand-teal-400 hover:text-brand-teal-500 font-medium transition-colors">
+          @{{ config.instagramHandle }}
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Months-playing counter (runs on every page that has [data-months-playing]) -->
+  <script>
+    (function () {
+      var el = document.querySelector("[data-months-playing]");
+      if (!el) return;
+      var startDate = el.dataset.monthsPlaying;
+      if (!startDate) return;
+      var parts = startDate.split("-");
+      if (parts.length < 2) return;
+      var start = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, 1);
+      var now = new Date();
+      var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+      if (months < 0) months = 0;
+      el.textContent = months;
+      el.setAttribute("aria-label", months + " months playing");
+    })();
+  </script>
+
+  <!-- Mobile nav toggle -->
+  <script>
+    (function () {
+      var btn  = document.getElementById("mobile-menu-btn");
+      var menu = document.getElementById("mobile-menu");
+      var iconOpen  = document.getElementById("icon-open");
+      var iconClose = document.getElementById("icon-close");
+      if (!btn || !menu) return;
+      btn.addEventListener("click", function () {
+        var open = menu.classList.toggle("hidden");
+        btn.setAttribute("aria-expanded", String(!open));
+        iconOpen.classList.toggle("hidden",  !open);
+        iconClose.classList.toggle("hidden", open);
+      });
+    })();
+  </script>
+
+</body>
+</html>

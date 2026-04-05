@@ -1,0 +1,16 @@
+{
+  "name": "mayaonkeys.com",
+  "version": "1.0.0",
+  "description": "Maya's Piano Journey — a family-friendly website documenting a young girl's piano learning journey.",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/css/styles.css -o ./public/css/styles.css",
+    "build": "npm run build:css && npx @11ty/eleventy",
+    "watch:css": "tailwindcss -i ./src/css/styles.css -o ./public/css/styles.css --watch",
+    "start": "npx @11ty/eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "tailwindcss": "^3.4.0"
+  }
+}

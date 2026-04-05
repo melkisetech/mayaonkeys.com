@@ -1,0 +1,25 @@
+{#
+  song-card.njk
+  Expected context variable: song (object from songs.json)
+  song.title, song.composer, song.status ("learned" | "learning"), song.dateLearned
+#}
+<article class="card flex flex-col gap-2">
+  <div class="flex items-start justify-between gap-3">
+    <div class="flex-1 min-w-0">
+      <h3 class="font-display font-semibold text-brand-dark text-base leading-snug truncate">
+        {{ song.title }}
+      </h3>
+      <p class="text-sm text-brand-dark/70 mt-0.5">{{ song.composer }}</p>
+    </div>
+    <span
+      class="shrink-0 mt-0.5
+        {% if song.status == 'learned' %}badge-learned{% else %}badge-learning{% endif %}"
+      aria-label="Status: {{ song.status }}">
+      {% if song.status == "learned" %}<span aria-hidden="true">✓</span> Learned{% else %}Learning{% endif %}
+    </span>
+  </div>
+
+  {% if song.dateLearned %}
+    <p class="text-xs text-brand-dark/40 font-medium">Learned {{ song.dateLearned }}</p>
+  {% endif %}
+</article>
