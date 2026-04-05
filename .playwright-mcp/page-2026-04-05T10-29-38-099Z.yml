@@ -1,0 +1,131 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - navigation "Main navigation" [ref=e4]:
+      - link "Maya's Piano Journey — home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - text: 🎹 Maya's Piano Journey
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link "Home" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e9]:
+          - link "About" [ref=e10] [cursor=pointer]:
+            - /url: /about/
+        - listitem [ref=e11]:
+          - link "Songs" [ref=e12] [cursor=pointer]:
+            - /url: /songs/
+        - listitem [ref=e13]:
+          - link "Milestones" [ref=e14] [cursor=pointer]:
+            - /url: /milestones/
+        - listitem [ref=e15]:
+          - link "Videos" [ref=e16] [cursor=pointer]:
+            - /url: /videos/
+      - button "Open menu" [ref=e17]:
+        - img [ref=e18]
+        - img [ref=e20]
+    - navigation "Mobile navigation" [ref=e22]:
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "Home" [ref=e25] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e26]:
+          - link "About" [ref=e27] [cursor=pointer]:
+            - /url: /about/
+        - listitem [ref=e28]:
+          - link "Songs" [ref=e29] [cursor=pointer]:
+            - /url: /songs/
+        - listitem [ref=e30]:
+          - link "Milestones" [ref=e31] [cursor=pointer]:
+            - /url: /milestones/
+        - listitem [ref=e32]:
+          - link "Videos" [ref=e33] [cursor=pointer]:
+            - /url: /videos/
+  - main [ref=e34]:
+    - generic [ref=e36]:
+      - paragraph [ref=e37]: 🎹
+      - heading "Maya's Piano Journey" [level=1] [ref=e38]
+      - paragraph [ref=e39]: Follow along as Maya learns to play, one song at a time. A family archive of musical milestones and magic moments.
+      - generic [ref=e40]:
+        - link "See milestones" [ref=e41] [cursor=pointer]:
+          - /url: /milestones/
+        - link "Songs list" [ref=e42] [cursor=pointer]:
+          - /url: /songs/
+    - region "Piano journey stats" [ref=e44]:
+      - list [ref=e45]:
+        - listitem [ref=e46]: 6 Months Playing
+        - listitem [ref=e47]: 5 Songs Learned
+        - listitem [ref=e48]: 5 Days / Week
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - heading "Recent Milestones" [level=2] [ref=e52]
+          - paragraph [ref=e53]: Latest highlights from the practice room
+        - link "See all milestones" [ref=e54] [cursor=pointer]:
+          - /url: /milestones/
+          - text: See all →
+      - generic [ref=e55]:
+        - article [ref=e56]:
+          - time [ref=e57]: February 14, 2026
+          - heading "Happy Birthday for Grandpa" [level=3] [ref=e58]
+          - paragraph [ref=e60]: Maya learned Happy Birthday just in time for Grandpa's birthday! She called him on video and played the whole song while everyone sang along. Grandpa said it was the best birthday present he ever received. She's so proud that she can now play songs for real occasions!
+        - article [ref=e61]:
+          - time [ref=e62]: January 30, 2026
+          - heading "Mastered Ode to Joy" [level=3] [ref=e63]
+          - paragraph [ref=e65]: Beethoven, watch out! Maya has learned Ode to Joy and can play it smoothly from start to finish. Her teacher introduced her to the idea that this piece is over 200 years old, and Maya thought that was hilarious. She's now officially a Beethoven fan.
+        - article [ref=e66]:
+          - time [ref=e67]: December 24, 2025
+          - heading "Christmas Eve Surprise Performance" [level=3] [ref=e68]
+          - paragraph [ref=e70]: Maya surprised the whole family on Christmas Eve by performing three songs in a row — Twinkle Twinkle, Mary Had a Little Lamb, and Hot Cross Buns. Grandma and Grandpa joined over video call and were absolutely thrilled. It was the best gift under the tree!
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - heading "Songs I Can Play" [level=2] [ref=e74]
+          - paragraph [ref=e75]: A growing repertoire
+        - link "See full songs list" [ref=e76] [cursor=pointer]:
+          - /url: /songs/
+          - text: Full list →
+      - generic [ref=e77]:
+        - article [ref=e78]:
+          - generic [ref=e79]:
+            - generic [ref=e80]:
+              - heading "Twinkle Twinkle Little Star" [level=3] [ref=e81]
+              - paragraph [ref=e82]: Traditional
+            - 'generic "Status: learned" [ref=e83]': ✓ Learned
+          - paragraph [ref=e84]: Learned 2025-11
+        - article [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - heading "Mary Had a Little Lamb" [level=3] [ref=e88]
+              - paragraph [ref=e89]: Traditional
+            - 'generic "Status: learned" [ref=e90]': ✓ Learned
+          - paragraph [ref=e91]: Learned 2025-11
+        - article [ref=e92]:
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - heading "Hot Cross Buns" [level=3] [ref=e95]
+              - paragraph [ref=e96]: Traditional
+            - 'generic "Status: learned" [ref=e97]': ✓ Learned
+          - paragraph [ref=e98]: Learned 2025-12
+        - article [ref=e99]:
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - heading "Ode to Joy" [level=3] [ref=e102]
+              - paragraph [ref=e103]: Beethoven
+            - 'generic "Status: learned" [ref=e104]': ✓ Learned
+          - paragraph [ref=e105]: Learned 2026-01
+    - link "Follow on Instagram Watch Maya's performance videos at @maya.on.keys Open Instagram →" [ref=e107] [cursor=pointer]:
+      - /url: https://instagram.com/maya.on.keys
+      - paragraph [ref=e108]: 📸
+      - heading "Follow on Instagram" [level=2] [ref=e109]
+      - paragraph [ref=e110]: Watch Maya's performance videos at @maya.on.keys
+      - text: Open Instagram →
+  - contentinfo [ref=e111]:
+    - generic [ref=e112]:
+      - paragraph [ref=e113]: 🎹 Maya's Piano Journey
+      - paragraph [ref=e114]: A family archive of musical milestones.
+      - paragraph [ref=e115]:
+        - text: "Follow along on Instagram:"
+        - link "@maya.on.keys" [ref=e116] [cursor=pointer]:
+          - /url: https://instagram.com/maya.on.keys

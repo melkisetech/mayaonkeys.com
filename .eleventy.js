@@ -3,7 +3,7 @@ const { DateTime } = require("luxon");
 module.exports = function (eleventyConfig) {
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("admin");
-  eleventyConfig.addPassthroughCopy("public");
+  eleventyConfig.addPassthroughCopy({ "public": "." });
 
   // Collections
   eleventyConfig.addCollection("milestones", function (collectionApi) {
