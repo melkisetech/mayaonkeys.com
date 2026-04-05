@@ -14,6 +14,9 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="/css/styles.css" />
+
+  <!-- Netlify Identity widget (handles invite/confirmation tokens at the site root) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body class="min-h-screen flex flex-col">
 
@@ -107,6 +110,19 @@
       el.textContent = months;
       el.setAttribute("aria-label", months + " months playing");
     })();
+  </script>
+
+  <!-- After login redirect to admin -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
   </script>
 
   <!-- Mobile nav toggle -->
