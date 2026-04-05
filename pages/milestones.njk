@@ -17,14 +17,47 @@ permalink: /milestones/
   </div>
 </section>
 
+{# ── Year jump nav (shown once there are 3+ years) ─────── #}
+{% set milestoneYears = [] %}
+{% for milestone in collections.milestones %}
+  {% set yr = milestone.date | year %}
+  {% if yr not in milestoneYears %}
+    {% set milestoneYears = (milestoneYears.push(yr), milestoneYears) %}
+  {% endif %}
+{% endfor %}
+
+{% if milestoneYears.length >= 3 %}
+  <nav class="max-w-2xl mx-auto px-4 sm:px-6 mt-8" aria-label="Jump to year">
+    <div class="flex flex-wrap gap-2">
+      {% for yr in milestoneYears %}
+        <a href="#milestones-{{ yr }}"
+           class="text-sm font-semibold px-3 py-1 rounded-full border border-brand-purple-200 text-brand-purple-600 hover:bg-brand-purple-50 transition-colors">
+          {{ yr }}
+        </a>
+      {% endfor %}
+    </div>
+  </nav>
+{% endif %}
+
 {# ── Timeline ──────────────────────────────────────────── #}
-<section class="max-w-2xl mx-auto px-4 sm:px-6 mt-12 mb-6">
+<section class="max-w-2xl mx-auto px-4 sm:px-6 mt-8 mb-6">
   {% if collections.milestones.length %}
+    {% set currentYear = null %}
     <ol class="list-none" aria-label="Milestone timeline">
       {% for milestone in collections.milestones %}
+        {% set milestoneYear = milestone.date | year %}
+        {% if milestoneYear != currentYear %}
+          {% if not loop.first %}</ol>{% endif %}
+          <h2 id="milestones-{{ milestoneYear }}"
+              class="font-display font-bold text-xl text-brand-purple-700 mt-10 mb-4 first:mt-0">
+            {{ milestoneYear }}
+          </h2>
+          <ol class="list-none" aria-label="Milestones from {{ milestoneYear }}">
+          {% set currentYear = milestoneYear %}
+        {% endif %}
         <li>{% include "milestone-entry.njk" %}</li>
       {% endfor %}
-    </ol>
+      </ol>
   {% else %}
     <div class="text-center py-16">
       <p class="text-5xl mb-4" aria-hidden="true">🌱</p>

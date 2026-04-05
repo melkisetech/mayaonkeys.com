@@ -30,25 +30,20 @@ collections:
 
   - name: "songs"
     label: "Songs"
-    files:
-      - name: "song_list"
-        label: "Song List"
-        file: "_data/songs.json"
-        fields:
-          - label: "Songs"
-            name: "songs"
-            widget: "list"
-            fields:
-              - { label: "ID", name: "id", widget: "string", hint: "Unique identifier (e.g. 1, 2, 3)" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Composer / Source", name: "composer", widget: "string" }
-              - label: "Status"
-                name: "status"
-                widget: "select"
-                options:
-                  - { label: "Learned ✓", value: "learned" }
-                  - { label: "Learning…", value: "learning" }
-              - { label: "Date Learned", name: "dateLearned", widget: "string", required: false, hint: "Format: YYYY-MM — leave blank if still learning" }
+    folder: "content/songs"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Composer / Source", name: "composer", widget: "string" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Learned ✓", value: "learned" }
+          - { label: "Learning…", value: "learning" }
+      - { label: "Date Learned", name: "dateLearned", widget: "string", required: false, hint: "Format: YYYY-MM — leave blank if still learning" }
 
   - name: "milestones"
     label: "Milestones"
