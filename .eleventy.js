@@ -29,6 +29,12 @@ module.exports = function (eleventyConfig) {
     songs.filter((s) => s.status === "learned")
   );
 
+  // htmlDateString was removed in 11ty v3 — add it back for <time datetime="...">
+  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
+    if (!dateObj) return "";
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-MM-dd");
+  });
+
   return {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
