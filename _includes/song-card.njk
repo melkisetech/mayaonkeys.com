@@ -9,13 +9,13 @@
       <h3 class="font-display font-semibold text-brand-dark text-base leading-snug truncate">
         {{ song.title }}
       </h3>
-      <p class="text-sm text-brand-dark/60 mt-0.5">{{ song.composer }}</p>
+      <p class="text-sm text-brand-dark/70 mt-0.5">{{ song.composer }}</p>
     </div>
     <span
       class="shrink-0 mt-0.5
         {% if song.status == 'learned' %}badge-learned{% else %}badge-learning{% endif %}"
       aria-label="Status: {{ song.status }}">
-      {% if song.status == "learned" %}✓ Learned{% else %}Learning{% endif %}
+      {% if song.status == "learned" %}<span aria-hidden="true">✓</span> Learned{% else %}Learning{% endif %}
     </span>
   </div>
 

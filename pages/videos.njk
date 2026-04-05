@@ -20,7 +20,9 @@ permalink: /videos/
 {# ── LightWidget embed ─────────────────────────────────── #}
 <section class="max-w-4xl mx-auto px-4 sm:px-6 mt-10 mb-6">
   {% if config.lightwidgetEmbedCode %}
-    <div class="rounded-2xl overflow-hidden border border-brand-purple-100 shadow-sm">
+    {# Note: when adding LightWidget embed, ensure the iframe includes title="Instagram feed" for screen readers #}
+    <div class="rounded-2xl overflow-hidden border border-brand-purple-100 shadow-sm"
+         role="region" aria-label="Instagram photo and video feed">
       {{ config.lightwidgetEmbedCode | safe }}
     </div>
   {% else %}

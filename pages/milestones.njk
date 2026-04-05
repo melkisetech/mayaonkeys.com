@@ -20,11 +20,11 @@ permalink: /milestones/
 {# ── Timeline ──────────────────────────────────────────── #}
 <section class="max-w-2xl mx-auto px-4 sm:px-6 mt-12 mb-6">
   {% if collections.milestones.length %}
-    <div role="list" aria-label="Milestone timeline">
+    <ol class="list-none" aria-label="Milestone timeline">
       {% for milestone in collections.milestones %}
-        {% include "milestone-entry.njk" %}
+        <li>{% include "milestone-entry.njk" %}</li>
       {% endfor %}
-    </div>
+    </ol>
   {% else %}
     <div class="text-center py-16">
       <p class="text-5xl mb-4" aria-hidden="true">🌱</p>

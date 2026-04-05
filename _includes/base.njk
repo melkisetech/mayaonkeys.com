@@ -60,7 +60,7 @@
     </nav>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden sm:hidden border-t border-brand-purple-100 bg-white" role="dialog" aria-label="Mobile navigation">
+    <nav id="mobile-menu" class="hidden sm:hidden border-t border-brand-purple-100 bg-white" aria-label="Mobile navigation">
       <ul class="max-w-5xl mx-auto px-4 py-3 flex flex-col gap-1 list-none" role="list">
         <li><a href="/"            class="mobile-nav-link {% if page.url == '/' %}mobile-nav-link--active{% endif %}">Home</a></li>
         <li><a href="/about/"      class="mobile-nav-link {% if page.url == '/about/' %}mobile-nav-link--active{% endif %}">About</a></li>
@@ -68,7 +68,7 @@
         <li><a href="/milestones/" class="mobile-nav-link {% if page.url == '/milestones/' %}mobile-nav-link--active{% endif %}">Milestones</a></li>
         <li><a href="/videos/"     class="mobile-nav-link {% if page.url == '/videos/' %}mobile-nav-link--active{% endif %}">Videos</a></li>
       </ul>
-    </div>
+    </nav>
   </header>
 
   <!-- Page content -->
