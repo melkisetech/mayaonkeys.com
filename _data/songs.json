@@ -1,0 +1,53 @@
+{
+  "songs": [
+    {
+      "id": "1",
+      "title": "Twinkle Twinkle Little Star",
+      "composer": "Traditional",
+      "status": "learned",
+      "dateLearned": "2025-11"
+    },
+    {
+      "id": "2",
+      "title": "Mary Had a Little Lamb",
+      "composer": "Traditional",
+      "status": "learned",
+      "dateLearned": "2025-11"
+    },
+    {
+      "id": "3",
+      "title": "Hot Cross Buns",
+      "composer": "Traditional",
+      "status": "learned",
+      "dateLearned": "2025-12"
+    },
+    {
+      "id": "4",
+      "title": "Ode to Joy",
+      "composer": "Beethoven",
+      "status": "learned",
+      "dateLearned": "2026-01"
+    },
+    {
+      "id": "5",
+      "title": "Happy Birthday",
+      "composer": "Traditional",
+      "status": "learned",
+      "dateLearned": "2026-02"
+    },
+    {
+      "id": "6",
+      "title": "Für Elise (intro)",
+      "composer": "Beethoven",
+      "status": "learning",
+      "dateLearned": null
+    },
+    {
+      "id": "7",
+      "title": "Minuet in G",
+      "composer": "Bach",
+      "status": "learning",
+      "dateLearned": null
+    }
+  ]
+}
