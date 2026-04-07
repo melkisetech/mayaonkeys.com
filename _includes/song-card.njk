@@ -2,7 +2,7 @@
   song-card.njk
   Expected context variable: song (11ty collection item from content/songs/*.md)
   song.data.title, song.data.composer, song.data.status ("learned" | "learning"), song.data.dateLearned
-  song.data.book (optional), song.data.page (optional)
+  song.data.book (optional), song.data.pageNumber (optional)
 #}
 <article class="card flex flex-col gap-2">
   <div class="flex items-start justify-between gap-3">
@@ -23,7 +23,7 @@
   {% if song.data.book %}
     <p class="text-xs text-brand-dark/50 leading-snug">
       <span aria-hidden="true">📖</span>
-      {{ song.data.book }}{% if song.data.page %} &middot; p.&nbsp;{{ song.data.page }}{% endif %}
+      {{ song.data.book }}{% if song.data.pageNumber %} &middot; p.&nbsp;{{ song.data.pageNumber }}{% endif %}
     </p>
   {% endif %}
 
