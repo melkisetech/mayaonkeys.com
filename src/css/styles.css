@@ -56,4 +56,12 @@
   .mobile-nav-link--active {
     @apply text-brand-purple-500 bg-brand-purple-50 font-semibold;
   }
+
+  .milestone-entry {
+    padding-bottom: 1rem;
+  }
+
+  li:last-child > .milestone-entry {
+    padding-bottom: 0;
+  }
 }

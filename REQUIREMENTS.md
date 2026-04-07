@@ -57,7 +57,9 @@ Two sections on the main page:
 #### Year Pages (`/songs/{year}/`)
 
 - One static page per calendar year containing learned songs (e.g. `/songs/2025/`, `/songs/2026/`)
-- Each song displays: title, composer, status badge (green "Learned"), date learned
+- Each song card displays: title, composer, status badge (green "Learned"), date learned
+- Optional: book name and page number (rendered as "📖 Book Name · p. 24")
+- Optional: external link button with smart label auto-detection (YouTube, Instagram, TikTok, Facebook)
 - Back navigation to main songs page
 - Previous/next year links
 
@@ -68,7 +70,8 @@ Two sections on the main page:
 - Chronological timeline of progress entries, newest first
 - Year grouping with anchor-based navigation (shows year headers when entries span 3+ years)
 - Each entry: date, title, markdown-rendered description
-- Entries may include plain markdown links to Instagram posts
+- Optional photo thumbnail (112×112 / 144×144px) with lightbox button to expand full image
+- Optional external link button (YouTube, Instagram, TikTok, etc.) with smart label auto-detection
 - Written by the parent as `.md` files in `content/milestones/`
 - List-only view — no individual detail pages
 
@@ -115,29 +118,56 @@ title: Twinkle Twinkle Little Star
 composer: Traditional
 status: learned
 dateLearned: "2025-11"
+book: "Alfred's Premier Piano Course, Lesson 1A"
+pageNumber: "24"
+externalLink: "https://www.youtube.com/watch?v=..."
+externalLinkLabel: "Watch on YouTube"
 ---
 ```
 
-- `status`: `learned` or `learning`
-- `dateLearned`: `YYYY-MM` format string for learned songs, `null` for learning songs
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `title` | string | yes | Song name |
+| `composer` | string | yes | Composer or source (e.g. "Traditional") |
+| `status` | string | yes | `"learned"` or `"learning"` |
+| `dateLearned` | string | no | `YYYY-MM` format — omit for learning songs |
+| `book` | string | no | Name of the method book (e.g. "Alfred's Premier Piano Course") |
+| `pageNumber` | string | no | Page number(s) in the book (e.g. `"24"` or `"24-25"`) |
+| `externalLink` | string | no | URL to YouTube, Instagram, TikTok, etc. |
+| `externalLinkLabel` | string | no | Custom button label — auto-detected from URL if omitted |
+
 - Filenames are slugified titles (e.g. `twinkle-twinkle-little-star.md`)
 - A `songs.11tydata.json` file in the directory sets `permalink: false` (songs don't render as individual pages)
+- External link label auto-detection: "Watch on YouTube" for youtube.com/youtu.be, "View on Instagram" for instagram.com, "View on TikTok" for tiktok.com, "View on Facebook" for facebook.com, "View link" as fallback
 
 ### `content/milestones/*.md` — Milestone Entries
 
 ```markdown
 ---
-title: First Performance
+title: First Full Song — Twinkle Twinkle!
 date: 2025-11-20
+image: /images/twinkle-performance.jpeg
+imageAlt: Maya smiling at the piano after playing Twinkle Twinkle
+externalLink: https://www.instagram.com/p/...
+externalLinkLabel: "View on Instagram"
 ---
 Maya played Twinkle Twinkle Little Star all the way through for the first time!
-[Watch on Instagram](https://instagram.com/maya.on.keys)
 ```
 
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `title` | string | yes | Milestone heading |
+| `date` | date | yes | `YYYY-MM-DD` format (parsed by 11ty) |
+| `image` | string | no | Path to photo (e.g. `/images/photo.jpeg`) |
+| `imageAlt` | string | no | Alt text for screen readers — defaults to title |
+| `externalLink` | string | no | URL to Instagram post, YouTube video, etc. |
+| `externalLinkLabel` | string | no | Custom button label — auto-detected from URL if omitted |
+| body | markdown | yes | Full description, supports links and basic formatting |
+
 - Filename format: `YYYY-MM-DD-slug.md`
-- `date` field is a proper date (parsed by 11ty)
-- Body is markdown supporting links and basic formatting
 - No individual detail pages — rendered inline on `/milestones/`
+- Images display as 112×112px (desktop: 144×144px) thumbnails with a lightbox button that expands to full size
+- External link label auto-detection matches the same rules as songs (YouTube, Instagram, TikTok, Facebook)
 
 ---
 
@@ -307,9 +337,13 @@ collections:
         name: "status"
         widget: "select"
         options:
-          - { label: "Learned", value: "learned" }
-          - { label: "Learning", value: "learning" }
+          - { label: "Learned ✓", value: "learned" }
+          - { label: "Learning…", value: "learning" }
       - { label: "Date Learned", name: "dateLearned", widget: "string", required: false, hint: "Format: YYYY-MM — leave blank if still learning" }
+      - { label: "Book", name: "book", widget: "string", required: false, hint: "Name of the book/method book this piece is from (e.g. Alfred's Premier Piano Course, Lesson 1B)" }
+      - { label: "Page", name: "pageNumber", widget: "string", required: false, hint: "Page number(s) in the book (e.g. 24 or 24-25)" }
+      - { label: "External Link", name: "externalLink", widget: "string", required: false, hint: "Optional link to YouTube, Instagram, etc." }
+      - { label: "Link Label", name: "externalLinkLabel", widget: "string", required: false, hint: "Custom button label (e.g. Watch on YouTube). Auto-detected from URL if left blank." }
 
   - name: "milestones"
     label: "Milestones"
@@ -320,6 +354,10 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Optional photo for this milestone" }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers" }
+      - { label: "External Link", name: "externalLink", widget: "string", required: false, hint: "Optional link to YouTube, Instagram, etc." }
+      - { label: "Link Label", name: "externalLinkLabel", widget: "string", required: false, hint: "Custom button label (e.g. Watch on YouTube). Auto-detected from URL if left blank." }
       - { label: "Description", name: "body", widget: "markdown" }
 ```
 

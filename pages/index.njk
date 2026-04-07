@@ -43,16 +43,25 @@ permalink: /
   {% if recentMilestones.length %}
     <div class="space-y-4">
       {% for milestone in recentMilestones %}
-        <article class="card">
-          <time class="text-xs font-semibold text-brand-teal-400 uppercase tracking-wide"
-                datetime="{{ milestone.date | htmlDateString }}">
-            {{ milestone.date | dateDisplay }}
-          </time>
-          <h3 class="font-display font-bold text-brand-dark text-base mt-1 mb-1">{{ milestone.data.title }}</h3>
-          <div class="text-sm text-brand-dark/65 line-clamp-2 prose prose-sm max-w-none
-                      prose-a:text-brand-teal-400 prose-a:no-underline">
-            {{ milestone.content | safe }}
+        <article class="card flex gap-3">
+          <div class="flex-1 min-w-0">
+            <time class="text-xs font-semibold text-brand-teal-400 uppercase tracking-wide"
+                  datetime="{{ milestone.date | htmlDateString }}">
+              {{ milestone.date | dateDisplay }}
+            </time>
+            <h3 class="font-display font-bold text-brand-dark text-base mt-1 mb-1">{{ milestone.data.title }}</h3>
+            <div class="text-sm text-brand-dark/65 line-clamp-2 prose prose-sm max-w-none
+                        prose-a:text-brand-teal-400 prose-a:no-underline">
+              {{ milestone.content | safe }}
+            </div>
           </div>
+          {% if milestone.data.image %}
+            <img
+              src="{{ milestone.data.image }}"
+              alt="{{ milestone.data.imageAlt if milestone.data.imageAlt else milestone.data.title }}"
+              class="shrink-0 w-16 h-16 rounded-lg object-cover self-start"
+              loading="lazy">
+          {% endif %}
         </article>
       {% endfor %}
     </div>
