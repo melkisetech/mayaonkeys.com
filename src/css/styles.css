@@ -58,10 +58,10 @@
   }
 
   .milestone-entry {
-    padding-bottom: 7rem;
+    padding-bottom: 1rem;
   }
 
-  .milestone-entry:last-child {
+  li:last-child > .milestone-entry {
     padding-bottom: 0;
   }
 }
