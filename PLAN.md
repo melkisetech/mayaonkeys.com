@@ -71,6 +71,27 @@ Songs were migrated from `_data/songs.json` to individual markdown files under `
 
 ---
 
+## External Link Support (added after pagination)
+
+Allows songs and milestones to link out to YouTube, Instagram, TikTok, or any URL. The link label is auto-detected from the URL domain or can be overridden with a custom label.
+
+| # | Issue | Description | Status |
+|---|-------|-------------|--------|
+| 22 | [#4fff](https://github.com/melkisetech/mayaonkeys.com/pulls) | Add `externalLink` + `externalLinkLabel` fields to milestones | Done |
+| 23 | [#4fff](https://github.com/melkisetech/mayaonkeys.com/pulls) | Add `externalLink` + `externalLinkLabel` fields to songs | Done |
+
+### Details
+- Front matter fields: `externalLink` (URL string) and `externalLinkLabel` (optional override)
+- Auto-label logic (Nunjucks, in `song-card.njk` and `milestone-entry.njk`):
+  - `youtube.com` / `youtu.be` → "Watch on YouTube"
+  - `instagram.com` → "View on Instagram"
+  - `tiktok.com` → "View on TikTok"
+  - `facebook.com` → "View on Facebook"
+  - fallback → "View link"
+- CMS fields added to both Songs and Milestones collections in `admin/config.yml`
+
+---
+
 ## Key Architectural Notes
 
 - Songs live as individual `.md` files in `content/songs/`; templates use `collections.songs`
