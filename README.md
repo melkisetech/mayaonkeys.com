@@ -1,6 +1,6 @@
 # mayaonkeys.com
 
-A family-friendly website documenting Maya's piano learning journey — milestones, song repertoire, videos, and more.
+A family-friendly website documenting Maya's piano learning journey — milestones, songs, videos, and more.
 
 ## Tech Stack
 
