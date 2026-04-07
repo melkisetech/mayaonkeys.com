@@ -61,7 +61,7 @@
     padding-bottom: 7rem;
   }
 
-  .milestone-entry:last-child {
+  li:last-child > .milestone-entry {
     padding-bottom: 0;
   }
 }
