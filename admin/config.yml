@@ -56,4 +56,6 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Optional photo for this milestone" }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers" }
       - { label: "Description", name: "body", widget: "markdown" }
