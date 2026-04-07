@@ -125,6 +125,54 @@
     }
   </script>
 
+  <!-- Image lightbox -->
+  <div id="lightbox"
+       class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 cursor-zoom-out"
+       role="dialog" aria-modal="true">
+    <button id="lightbox-close"
+            class="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors"
+            aria-label="Close image viewer">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain">
+  </div>
+  <script>
+    (function () {
+      var lightbox   = document.getElementById("lightbox");
+      var lbImg      = document.getElementById("lightbox-img");
+      var lbClose    = document.getElementById("lightbox-close");
+      if (!lightbox) return;
+
+      function open(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt;
+        lightbox.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+        lbClose.focus();
+      }
+
+      function close() {
+        lightbox.classList.add("hidden");
+        document.body.style.overflow = "";
+        lbImg.src = "";
+      }
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-lightbox-src]");
+        if (btn) { open(btn.dataset.lightboxSrc, btn.dataset.lightboxAlt || ""); return; }
+        if (e.target === lightbox) { close(); }
+      });
+
+      lbClose.addEventListener("click", close);
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !lightbox.classList.contains("hidden")) { close(); }
+      });
+    })();
+  </script>
+
   <!-- Mobile nav toggle -->
   <script>
     (function () {

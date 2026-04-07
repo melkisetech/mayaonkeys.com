@@ -23,11 +23,18 @@
     </h3>
     <div class="flex gap-4">
       {% if milestone.data.image %}
-        <img
-          src="{{ milestone.data.image }}"
-          alt="{{ milestone.data.imageAlt if milestone.data.imageAlt else milestone.data.title }}"
-          class="shrink-0 w-28 h-28 sm:w-36 sm:h-36 object-cover rounded-xl"
-          loading="lazy">
+        <button
+          type="button"
+          class="shrink-0 cursor-zoom-in rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-purple-400 focus:ring-offset-2"
+          data-lightbox-src="{{ milestone.data.image }}"
+          data-lightbox-alt="{{ milestone.data.imageAlt if milestone.data.imageAlt else milestone.data.title }}"
+          aria-label="View full image: {{ milestone.data.imageAlt if milestone.data.imageAlt else milestone.data.title }}">
+          <img
+            src="{{ milestone.data.image }}"
+            alt="{{ milestone.data.imageAlt if milestone.data.imageAlt else milestone.data.title }}"
+            class="w-28 h-28 sm:w-36 sm:h-36 object-cover rounded-xl"
+            loading="lazy">
+        </button>
       {% endif %}
       <div class="prose prose-sm prose-stone max-w-none text-brand-dark/75
                   prose-a:text-brand-teal-400 prose-a:no-underline hover:prose-a:underline">
