@@ -45,7 +45,7 @@ collections:
           - { label: "Learning…", value: "learning" }
       - { label: "Date Learned", name: "dateLearned", widget: "string", required: false, hint: "Format: YYYY-MM — leave blank if still learning" }
       - { label: "Book", name: "book", widget: "string", required: false, hint: "Name of the book/method book this piece is from (e.g. Alfred's Premier Piano Course, Lesson 1B)" }
-      - { label: "Page", name: "page", widget: "string", required: false, hint: "Page number(s) in the book (e.g. 24 or 24-25)" }
+      - { label: "Page", name: "pageNumber", widget: "string", required: false, hint: "Page number(s) in the book (e.g. 24 or 24-25)" }
 
   - name: "milestones"
     label: "Milestones"
