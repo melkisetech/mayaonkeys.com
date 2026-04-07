@@ -8,5 +8,63 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Client-side image compression before CMS upload.
+    // Resizes to at most 1600px on the longest side, converts to JPEG at 82% quality.
+    // Skips files already under 200 KB or non-photo formats (GIF).
+    const MAX_PX = 1600;
+    const QUALITY = 0.82;
+    const SKIP_BYTES = 200 * 1024;
+
+    function compressImage(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = ({ target: { result } }) => {
+          const img = new Image();
+          img.onload = () => {
+            let { width: w, height: h } = img;
+            const scale = Math.min(1, MAX_PX / Math.max(w, h));
+            w = Math.round(w * scale);
+            h = Math.round(h * scale);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+
+            canvas.toBlob((blob) => {
+              const name = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+              resolve(new File([blob], name, { type: 'image/jpeg' }));
+            }, 'image/jpeg', QUALITY);
+          };
+          img.src = result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Attach to file inputs added by Decap CMS.
+    const observer = new MutationObserver(() => {
+      document.querySelectorAll('input[type="file"]:not([data-compress])').forEach((input) => {
+        input.dataset.compress = '1';
+        input.addEventListener('change', async function handler(e) {
+          const file = e.target.files[0];
+          if (!file || file.type === 'image/gif' || !file.type.startsWith('image/') || file.size < SKIP_BYTES) return;
+
+          const compressed = await compressImage(file);
+          const dt = new DataTransfer();
+          dt.items.add(compressed);
+
+          // Temporarily remove handler so the re-dispatch doesn't loop.
+          input.removeEventListener('change', handler);
+          input.files = dt.files;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+          input.addEventListener('change', handler);
+        });
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
 </body>
 </html>
