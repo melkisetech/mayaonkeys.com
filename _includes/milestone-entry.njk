@@ -21,6 +21,13 @@
     <h3 class="font-display font-bold text-brand-dark text-lg mt-1 mb-2">
       {{ milestone.data.title }}
     </h3>
+    {% if milestone.data.image %}
+      <img
+        src="{{ milestone.data.image }}"
+        alt="{{ milestone.data.imageAlt if milestone.data.imageAlt else milestone.data.title }}"
+        class="w-full aspect-video object-cover rounded-xl mb-3"
+        loading="lazy">
+    {% endif %}
     <div class="prose prose-sm prose-stone max-w-none text-brand-dark/75
                 prose-a:text-brand-teal-400 prose-a:no-underline hover:prose-a:underline">
       {{ milestone.content | safe }}
