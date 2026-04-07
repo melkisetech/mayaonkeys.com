@@ -58,4 +58,6 @@ collections:
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
       - { label: "Image", name: "image", widget: "image", required: false, hint: "Optional photo for this milestone" }
       - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers" }
+      - { label: "External Link", name: "externalLink", widget: "string", required: false, hint: "Optional link to YouTube, Instagram, etc." }
+      - { label: "Link Label", name: "externalLinkLabel", widget: "string", required: false, hint: "Custom button label (e.g. Watch on YouTube). Auto-detected from URL if left blank." }
       - { label: "Description", name: "body", widget: "markdown" }
