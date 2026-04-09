@@ -1,6 +1,6 @@
 ---
 title: Tabiatın Dili
-composer: Nilgün KIRKAĞAÇLIOĞLU
+composer: N. Kırkağaçlıoğlu
 status: learning
 book: Piyano Metodu 1
 pageNumber: "52"
