@@ -198,7 +198,7 @@ These issues prevent the site from appearing in search engines at all.
 | 3 | Create sitemap.xml | Critical | Low | ✅ Done |
 | 4 | Per-page meta descriptions | High | Low | ⬜ Todo |
 | 5 | Open Graph tags | High | Low | ⬜ Todo |
-| 6 | Twitter Card tags | High | Low | ⬜ Todo |
+| 6 | Twitter Card tags | High | Low | ✅ Done |
 | 7 | Canonical URL tags | High | Low | ⬜ Todo |
 | 8 | Improve homepage `<title>` | High | Trivial | ⬜ Todo |
 | 9 | Person/Organization JSON-LD | High | Medium | ⬜ Todo |
