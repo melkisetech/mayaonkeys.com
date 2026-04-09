@@ -704,13 +704,17 @@
       overflow: hidden;
     }
     .hero-preview::before {
-      content: '🎹';
+      content: '';
+      background-image: url('/images/piano-icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: block;
+      width: 10rem;
+      height: 10rem;
       position: absolute;
-      font-size: 10rem;
       opacity: 0.05;
       top: -1rem;
       right: -1rem;
-      line-height: 1;
     }
     .hero-preview-tagline {
       display: inline-block;
@@ -1340,7 +1344,7 @@
 
         <p class="palette-group-title">With icons</p>
         <div class="btn-group mb-6">
-          <button class="btn btn-primary">🎹 Start Playing</button>
+          <button class="btn btn-primary"><img src="/images/piano-icon.png" alt="" style="width:1.2rem;height:1.2rem;vertical-align:middle;margin-right:0.25rem;"> Start Playing</button>
           <button class="btn btn-teal">📸 View on Instagram</button>
           <button class="btn btn-outline">📋 See All Songs</button>
         </div>
@@ -1400,7 +1404,7 @@
             <span class="badge badge-learning">Learning</span>
           </div>
           <div class="song-card">
-            <div class="song-card-icon">🎹</div>
+            <div class="song-card-icon"><img src="/images/piano-icon.png" alt="" style="width:1.5rem;height:1.5rem;"></div>
             <div class="song-card-info">
               <div class="song-card-title">Happy Birthday</div>
               <div class="song-card-composer">Traditional · Dec 2025</div>
@@ -1555,7 +1559,7 @@
         </p>
 
         <div class="icon-grid mt-4">
-          <div class="icon-item"><span>🎹</span><span class="icon-item-label">Piano / Site</span></div>
+          <div class="icon-item"><img src="/images/piano-icon.png" alt="" style="width:1.5rem;height:1.5rem;"><span class="icon-item-label">Piano / Site</span></div>
           <div class="icon-item"><span>🎵</span><span class="icon-item-label">Song</span></div>
           <div class="icon-item"><span>🎶</span><span class="icon-item-label">Learning</span></div>
           <div class="icon-item"><span>⭐</span><span class="icon-item-label">Milestone</span></div>
@@ -1585,7 +1589,7 @@
         <p class="section-desc">A compositional preview showing how colors, type, and components work together on the home page.</p>
 
         <div class="hero-preview">
-          <span class="hero-preview-tagline">🎹 Piano Journey</span>
+          <span class="hero-preview-tagline"><img src="/images/piano-icon.png" alt="" style="width:1em;height:1em;vertical-align:middle;margin-right:0.25rem;"> Piano Journey</span>
           <h2>Maya's <span>Piano</span> Journey</h2>
           <p>One song at a time, one proud smile at a time. Follow along as Maya learns to play!</p>
 
