@@ -66,9 +66,13 @@
   }
 
   .page-banner {
-    position: relative;
-    height: 380px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 480px;
     overflow: hidden;
+    z-index: 0;
   }
 
   .page-banner__img {
@@ -100,7 +104,7 @@
 
   @media (max-width: 639px) {
     .page-banner {
-      height: 240px;
+      height: 320px;
     }
 
     .page-banner__img {
