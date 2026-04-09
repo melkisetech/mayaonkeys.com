@@ -10,7 +10,7 @@
       <h3 class="font-display font-semibold text-brand-dark text-base leading-snug truncate">
         {{ song.data.title }}
       </h3>
-      <p class="text-sm text-brand-dark/70 mt-0.5">{{ song.data.composer }}</p>
+      {% if song.data.composer %}<p class="text-sm text-brand-dark/70 mt-0.5">{{ song.data.composer }}</p>{% endif %}
     </div>
     <span
       class="shrink-0 mt-0.5
