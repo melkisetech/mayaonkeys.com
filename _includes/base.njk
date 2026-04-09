@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{% if title %}{{ title }} — {% endif %}Maya's Piano Journey</title>
-  <meta name="description" content="Following Maya's piano learning adventure — songs, milestones, and musical moments." />
+  <meta name="description" content="{{ description if description else 'Following Maya\'s piano learning adventure — songs, milestones, and musical moments.' }}" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

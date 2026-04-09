@@ -196,7 +196,7 @@ These issues prevent the site from appearing in search engines at all.
 | 1 | Remove `noindex` meta tag | Critical | Trivial | ✅ Done |
 | 2 | Fix robots.txt | Critical | Trivial | ✅ Done |
 | 3 | Create sitemap.xml | Critical | Low | ✅ Done |
-| 4 | Per-page meta descriptions | High | Low | ⬜ Todo |
+| 4 | Per-page meta descriptions | High | Low | ✅ Done |
 | 5 | Open Graph tags | High | Low | ⬜ Todo |
 | 6 | Twitter Card tags | High | Low | ⬜ Todo |
 | 7 | Canonical URL tags | High | Low | ⬜ Todo |
