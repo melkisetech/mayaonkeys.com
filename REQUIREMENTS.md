@@ -90,6 +90,7 @@ Two sections on the main page:
 
 ```json
 {
+  "url": "https://www.mayaonkeys.com",
   "name": "Maya",
   "startDate": "2025-10",
   "practicePerWeek": 5,
