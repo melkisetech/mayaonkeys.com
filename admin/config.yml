@@ -33,10 +33,10 @@ collections:
     folder: "content/songs"
     create: true
     delete: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Composer / Source", name: "composer", widget: "string" }
+      - { label: "Composer / Source", name: "composer", widget: "string", required: false }
       - label: "Status"
         name: "status"
         widget: "select"
