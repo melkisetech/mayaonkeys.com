@@ -7,7 +7,7 @@ A family-friendly website documenting Maya's piano learning journey — mileston
 - **[Eleventy (11ty)](https://www.11ty.dev/)** v3 — static site generator
 - **[Nunjucks](https://mozilla.github.io/nunjucks/)** — templating language
 - **[Tailwind CSS](https://tailwindcss.com/)** v3 — utility-first CSS framework
-- **[Netlify CMS](https://v1.netlifycms.org/)** — content management via `/admin`
+- **[Decap CMS](https://decapcms.org/)** — content management via `/admin`
 - **[Netlify](https://www.netlify.com/)** — hosting and deployment
 
 ## Project Structure
@@ -16,8 +16,9 @@ A family-friendly website documenting Maya's piano learning journey — mileston
 mayaonkeys.com/
 ├── _data/              # Global data files (site config, songs list)
 ├── _includes/          # Nunjucks layout partials and components
-├── admin/              # Netlify CMS configuration and UI
+├── admin/              # Decap CMS configuration and UI
 ├── content/
+│   ├── songs/          # Individual song markdown files
 │   └── milestones/     # Markdown files for milestone entries
 ├── pages/              # Top-level page templates (.njk)
 ├── public/             # Static files served at the site root
@@ -101,7 +102,7 @@ netlify deploy --dir=_site --prod
 The `netlify.toml` file configures:
 - The build command and publish directory
 - Node.js version (`20`)
-- A redirect so the Netlify CMS admin SPA loads correctly at `/admin/`
+- A redirect so the Decap CMS admin SPA loads correctly at `/admin/`
 - A role-based redirect for Netlify Identity email confirmation
 
 ## Content Management
@@ -111,7 +112,7 @@ Site content lives in two places:
 | Content type | Location |
 |---|---|
 | Milestones | `content/milestones/*.md` |
-| Song repertoire | `_data/songs.json` |
+| Song repertoire | `content/songs/*.md` |
 | Site configuration (name, bio, Instagram, etc.) | `_data/config.json` |
 
 You can also manage content through the CMS UI at `/admin` (requires Netlify Identity to be enabled on the site).
