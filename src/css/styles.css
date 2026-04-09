@@ -70,7 +70,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 480px;
+    height: 536px; /* image natural height */
     overflow: hidden;
     z-index: 0;
   }
@@ -100,16 +100,5 @@
       #faf7f2 88%
     );
     pointer-events: none;
-  }
-
-  @media (max-width: 639px) {
-    .page-banner {
-      height: 320px;
-    }
-
-    .page-banner__img {
-      top: -40px;
-      bottom: -40px;
-    }
   }
 }
