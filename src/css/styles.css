@@ -70,8 +70,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 0;
-    padding-bottom: 56.24%; /* image natural aspect ratio: 536/953 */
+    height: 536px; /* image natural height */
     overflow: hidden;
     z-index: 0;
   }
