@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{% if title %}{{ title }} — {% endif %}Maya's Piano Journey</title>
+  <title>{% if title %}{{ title }} — {% endif %}Maya's Piano Journey</title>
   <meta name="description" content="{{ description or 'Following Maya\'s piano learning adventure — songs, milestones, and musical moments.' }}" />
 
   <!-- Twitter Card -->
@@ -11,11 +11,23 @@
   <meta name="twitter:title" content="{% if title %}{{ title }} — {% endif %}Maya's Piano Journey" />
   <meta name="twitter:description" content="{{ description or 'Following Maya\'s piano learning adventure — songs, milestones, and musical moments.' }}" />
   <meta name="twitter:image" content="{{ config.url }}{{ ogImage or '/images/banner.jpg' }}" />
-
+  
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Maya's Piano Journey" />
+  <meta property="og:type" content="{{ ogType or 'website' }}" />
+  <meta property="og:title" content="{% if title %}{{ title }} — {% endif %}Maya's Piano Journey" />
+  <meta property="og:description" content="{{ description or 'Following Maya\'s piano learning adventure — songs, milestones, and musical moments.' }}" />
+  <meta property="og:url" content="{{ config.url }}{{ page.url }}" />
+  <meta property="og:image" content="{{ config.url }}{{ ogImage or '/images/banner.jpg' }}" />
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="/css/styles.css" />
