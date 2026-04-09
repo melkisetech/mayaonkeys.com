@@ -38,26 +38,20 @@ These issues prevent the site from appearing in search engines at all.
     - Milestones: "Key milestones in Maya's piano journey, from first lesson to repertoire growth."
     - Songs by year: "Piano songs Maya learned in {{ year }}."
 
-### 5. Add Open Graph (og:) meta tags
+### ✅ 5. Add Open Graph (og:) meta tags
 - **File:** `_includes/base.njk`
 - **Issue:** No Open Graph tags — links shared on social media show no preview image, title, or description.
-- **Fix:** Add the following to `<head>`:
-  - `og:type` (website for static pages, article for milestone entries)
-  - `og:title`
-  - `og:description`
-  - `og:url`
-  - `og:image` (use a default site image, overridable per-page)
-  - `og:site_name`
+- **Done:** Added `og:site_name`, `og:type`, `og:title`, `og:description`, `og:url`, and `og:image` to `<head>`. Defaults to `website` type and `/images/banner.jpg`; overridable per-page via `ogType`, `ogImage`, and `description` front matter.
 
 ### 6. Add Twitter Card meta tags
 - **File:** `_includes/base.njk`
 - **Issue:** No Twitter Card tags — X/Twitter shares show no preview.
 - **Fix:** Add `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`.
 
-### 7. Add canonical URL tags
+### ✅ 7. Add canonical URL tags
 - **File:** `_includes/base.njk`
 - **Issue:** No `<link rel="canonical">` tag. This is especially important for paginated year pages (`/songs/2025/`, `/songs/2026/`) to prevent duplicate content issues.
-- **Fix:** Add `<link rel="canonical" href="{{ page.url | absoluteUrl(metadata.url) }}" />` using the site's base URL from config/metadata.
+- **Done:** Added `<link rel="canonical" href="{{ config.url }}{{ page.url }}" />` to `<head>`, using `config.url` (`https://www.mayaonkeys.com`) from `_data/config.json`.
 
 ### 8. Improve `<title>` tag content
 - **File:** `_includes/base.njk:4`
@@ -160,10 +154,10 @@ These issues prevent the site from appearing in search engines at all.
 
 ## LOW — Social & Brand Presence
 
-### 25. Add a favicon
-- **File:** `_includes/base.njk`
-- **Issue:** No favicon is defined in the `<head>`. This is basic branding and affects how the site appears in browser tabs and bookmarks.
-- **Fix:** Add a `favicon.ico` (and ideally SVG + Apple touch icon) to `/public/` and reference them in `<head>`.
+### ✅ 25. Add a favicon
+- **File:** `_includes/base.njk`, `public/favicon-16x16.png`, `public/favicon-32x32.png`
+- **Issue:** No favicon was defined in the `<head>`.
+- **Done:** Added 16×16 and 32×32 grand-piano PNG favicons to `/public/` and referenced them in `<head>`.
 
 ### 26. Add `<meta name="author">` tag
 - **File:** `_includes/base.njk`
@@ -197,8 +191,12 @@ These issues prevent the site from appearing in search engines at all.
 | 2 | Fix robots.txt | Critical | Trivial | ✅ Done |
 | 3 | Create sitemap.xml | Critical | Low | ✅ Done |
 | 4 | Per-page meta descriptions | High | Low | ⬜ Todo |
+| 5 | Open Graph tags | High | Low | ✅ Done |
+| 4 | Per-page meta descriptions | High | Low | ✅ Done |
 | 5 | Open Graph tags | High | Low | ⬜ Todo |
 | 6 | Twitter Card tags | High | Low | ⬜ Todo |
+| 7 | Canonical URL tags | High | Low | ✅ Done |
+| 6 | Twitter Card tags | High | Low | ✅ Done |
 | 7 | Canonical URL tags | High | Low | ⬜ Todo |
 | 8 | Improve homepage `<title>` | High | Trivial | ⬜ Todo |
 | 9 | Person/Organization JSON-LD | High | Medium | ⬜ Todo |
@@ -217,7 +215,7 @@ These issues prevent the site from appearing in search engines at all.
 | 22 | Self-host fonts | Medium | Medium | ⬜ Todo |
 | 23 | `hreflang` (future) | Low | Defer | ⬜ Todo |
 | 24 | Trailing slash consistency | Low | Low | ⬜ Todo |
-| 25 | Favicon | Low | Low | ⬜ Todo |
+| 25 | Favicon | Low | Low | ✅ Done |
 | 26 | Author meta tag | Low | Trivial | ⬜ Todo |
 | 27 | Review social link `rel` attrs | Low | Trivial | ⬜ Todo |
 | 28 | Google Search Console | Low | Low | ⬜ Todo |
