@@ -74,7 +74,9 @@
   </header>
 
   <!-- Artwork banner — fades into the page content below -->
-  <div class="page-banner" role="presentation" aria-hidden="true"></div>
+  <div class="page-banner" role="presentation" aria-hidden="true">
+    <div class="page-banner__img" id="banner-img"></div>
+  </div>
 
   <!-- Page content -->
   <main id="main-content" class="flex-1 -mt-8">
@@ -179,6 +181,22 @@
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && !lightbox.classList.contains("hidden")) { close(); }
       });
+    })();
+  </script>
+
+  <!-- Banner parallax -->
+  <script>
+    (function () {
+      var img = document.getElementById("banner-img");
+      if (!img) return;
+      var ticking = false;
+      function update() {
+        img.style.transform = "translateY(" + (window.scrollY * 0.3) + "px)";
+        ticking = false;
+      }
+      window.addEventListener("scroll", function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
     })();
   </script>
 
