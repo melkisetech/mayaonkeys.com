@@ -1,0 +1,27 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ config.url }}/</loc>
+  </url>
+  <url>
+    <loc>{{ config.url }}/about/</loc>
+  </url>
+  <url>
+    <loc>{{ config.url }}/songs/</loc>
+  </url>
+  <url>
+    <loc>{{ config.url }}/milestones/</loc>
+  </url>
+  <url>
+    <loc>{{ config.url }}/videos/</loc>
+  </url>
+  {%- for year in collections.learnedYears %}
+  <url>
+    <loc>{{ config.url }}/songs/{{ year }}/</loc>
+  </url>
+  {%- endfor %}
+</urlset>
