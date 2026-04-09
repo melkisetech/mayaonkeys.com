@@ -8,19 +8,21 @@ Site: Maya's Piano Journey (Eleventy v3 / Netlify)
 
 These issues prevent the site from appearing in search engines at all.
 
-### 1. Remove `noindex` directive
-- **File:** `_includes/base.njk:6`
-- **Issue:** `<meta name="robots" content="noindex, nofollow" />` is present on every page, telling search engines to ignore the entire site.
-- **Fix:** Remove this tag entirely (or replace with `index, follow`).
+### ✅ 1. Remove `noindex` directive
+- **File:** `_includes/base.njk`
+- **Issue:** `<meta name="robots" content="noindex, nofollow" />` was present on every page.
+- **Done:** Tag removed. Commit `f53623b`.
 
-### 2. Fix robots.txt
+### ✅ 2. Fix robots.txt
 - **File:** `public/robots.txt`
-- **Issue:** Current content is `Disallow: /`, which blocks all crawlers from accessing any page.
-- **Fix:** Allow all crawlers and add a reference to the sitemap.
+- **Issue:** `Disallow: /` was blocking all crawlers.
+- **Done:** Updated to `Allow: /` with sitemap reference. Commit `f53623b`.
 
-### 3. Create sitemap.xml
-- **Issue:** No sitemap exists. Search engines cannot discover all pages efficiently.
-- **Fix:** Generate a dynamic `sitemap.xml` using Eleventy (e.g., a `sitemap.njk` page that lists all URLs, including year-based song pages). Submit to Google Search Console after deployment.
+### ✅ 3. Create sitemap.xml
+- **File:** `pages/sitemap.njk` → outputs `/sitemap.xml`
+- **Issue:** No sitemap existed.
+- **Done:** Eleventy template generates sitemap with all 7 public URLs (5 static + dynamic year pages). Commit `f53623b`.
+- **Next step:** Submit `https://www.mayaonkeys.com/sitemap.xml` to Google Search Console after deployment.
 
 ---
 
@@ -187,36 +189,36 @@ These issues prevent the site from appearing in search engines at all.
 
 ---
 
-## Summary Table
+## Progress Tracker
 
-| # | Area | Priority | Effort |
-|---|------|----------|--------|
-| 1 | Remove `noindex` meta tag | Critical | Trivial |
-| 2 | Fix robots.txt | Critical | Trivial |
-| 3 | Create sitemap.xml | Critical | Low |
-| 4 | Per-page meta descriptions | High | Low |
-| 5 | Open Graph tags | High | Low |
-| 6 | Twitter Card tags | High | Low |
-| 7 | Canonical URL tags | High | Low |
-| 8 | Improve homepage `<title>` | High | Trivial |
-| 9 | Person/Organization JSON-LD | High | Medium |
-| 10 | Article schema for milestones | High | Medium |
-| 11 | BreadcrumbList schema | High | Low |
-| 12 | MusicComposition schema | Medium | Medium |
-| 13 | Image width/height attributes | Medium | Low |
-| 14 | Modern image formats (WebP) | Medium | Medium |
-| 15 | Responsive images (`srcset`) | Medium | Medium |
-| 16 | Enforce meaningful alt text | Medium | Low |
-| 17 | Description field in CMS | Medium | Low |
-| 18 | Individual milestone pages | Medium | High |
-| 19 | Cross-link songs & milestones | Medium | Medium |
-| 20 | Visible breadcrumb trail | Medium | Low |
-| 21 | Preload critical assets | Medium | Low |
-| 22 | Self-host fonts | Medium | Medium |
-| 23 | `hreflang` (future) | Low | Defer |
-| 24 | Trailing slash consistency | Low | Low |
-| 25 | Favicon | Low | Low |
-| 26 | Author meta tag | Low | Trivial |
-| 27 | Review social link `rel` attrs | Low | Trivial |
-| 28 | Google Search Console | Low | Low |
-| 29 | Privacy-friendly analytics | Low | Low |
+| # | Area | Priority | Effort | Status |
+|---|------|----------|--------|--------|
+| 1 | Remove `noindex` meta tag | Critical | Trivial | ✅ Done |
+| 2 | Fix robots.txt | Critical | Trivial | ✅ Done |
+| 3 | Create sitemap.xml | Critical | Low | ✅ Done |
+| 4 | Per-page meta descriptions | High | Low | ⬜ Todo |
+| 5 | Open Graph tags | High | Low | ⬜ Todo |
+| 6 | Twitter Card tags | High | Low | ⬜ Todo |
+| 7 | Canonical URL tags | High | Low | ⬜ Todo |
+| 8 | Improve homepage `<title>` | High | Trivial | ⬜ Todo |
+| 9 | Person/Organization JSON-LD | High | Medium | ⬜ Todo |
+| 10 | Article schema for milestones | High | Medium | ⬜ Todo |
+| 11 | BreadcrumbList schema | High | Low | ⬜ Todo |
+| 12 | MusicComposition schema | Medium | Medium | ⬜ Todo |
+| 13 | Image width/height attributes | Medium | Low | ⬜ Todo |
+| 14 | Modern image formats (WebP) | Medium | Medium | ⬜ Todo |
+| 15 | Responsive images (`srcset`) | Medium | Medium | ⬜ Todo |
+| 16 | Enforce meaningful alt text | Medium | Low | ⬜ Todo |
+| 17 | Description field in CMS | Medium | Low | ⬜ Todo |
+| 18 | Individual milestone pages | Medium | High | ⬜ Todo |
+| 19 | Cross-link songs & milestones | Medium | Medium | ⬜ Todo |
+| 20 | Visible breadcrumb trail | Medium | Low | ⬜ Todo |
+| 21 | Preload critical assets | Medium | Low | ⬜ Todo |
+| 22 | Self-host fonts | Medium | Medium | ⬜ Todo |
+| 23 | `hreflang` (future) | Low | Defer | ⬜ Todo |
+| 24 | Trailing slash consistency | Low | Low | ⬜ Todo |
+| 25 | Favicon | Low | Low | ⬜ Todo |
+| 26 | Author meta tag | Low | Trivial | ⬜ Todo |
+| 27 | Review social link `rel` attrs | Low | Trivial | ⬜ Todo |
+| 28 | Google Search Console | Low | Low | ⬜ Todo |
+| 29 | Privacy-friendly analytics | Low | Low | ⬜ Todo |
