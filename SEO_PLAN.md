@@ -28,25 +28,20 @@ These issues prevent the site from appearing in search engines at all.
 
 ## HIGH — Metadata & Discoverability
 
-### 4. Add per-page meta descriptions
+### ✅ 4. Add per-page meta descriptions
 - **File:** `_includes/base.njk`
-- **Issue:** The `<meta name="description">` tag is the same generic text on every page: "Following Maya's piano learning adventure — songs, milestones, and musical moments."
-- **Fix:** Support a `description` front matter variable in each page template; fall back to the site-wide description only when not provided.
-  - Example per-page descriptions:
-    - About: Bio-based description
-    - Songs: "A list of all piano songs Maya has learned and is currently learning."
-    - Milestones: "Key milestones in Maya's piano journey, from first lesson to repertoire growth."
-    - Songs by year: "Piano songs Maya learned in {{ year }}."
+- **Issue:** The `<meta name="description">` tag was the same generic text on every page.
+- **Done:** `base.njk` supports a `description` front matter variable that overrides the site-wide fallback. All page templates (`about.njk`, `songs.njk`, `milestones.njk`, `songs-year.njk`, `videos.njk`) now include per-page descriptions.
 
 ### ✅ 5. Add Open Graph (og:) meta tags
 - **File:** `_includes/base.njk`
 - **Issue:** No Open Graph tags — links shared on social media show no preview image, title, or description.
 - **Done:** Added `og:site_name`, `og:type`, `og:title`, `og:description`, `og:url`, and `og:image` to `<head>`. Defaults to `website` type and `/images/banner.jpg`; overridable per-page via `ogType`, `ogImage`, and `description` front matter.
 
-### 6. Add Twitter Card meta tags
+### ✅ 6. Add Twitter Card meta tags
 - **File:** `_includes/base.njk`
-- **Issue:** No Twitter Card tags — X/Twitter shares show no preview.
-- **Fix:** Add `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`.
+- **Issue:** No Twitter Card tags — X/Twitter shares showed no preview.
+- **Done:** Added `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image` to `<head>`.
 
 ### ✅ 7. Add canonical URL tags
 - **File:** `_includes/base.njk`
@@ -190,14 +185,10 @@ These issues prevent the site from appearing in search engines at all.
 | 1 | Remove `noindex` meta tag | Critical | Trivial | ✅ Done |
 | 2 | Fix robots.txt | Critical | Trivial | ✅ Done |
 | 3 | Create sitemap.xml | Critical | Low | ✅ Done |
-| 4 | Per-page meta descriptions | High | Low | ⬜ Todo |
-| 5 | Open Graph tags | High | Low | ✅ Done |
 | 4 | Per-page meta descriptions | High | Low | ✅ Done |
-| 5 | Open Graph tags | High | Low | ⬜ Todo |
-| 6 | Twitter Card tags | High | Low | ⬜ Todo |
-| 7 | Canonical URL tags | High | Low | ✅ Done |
+| 5 | Open Graph tags | High | Low | ✅ Done |
 | 6 | Twitter Card tags | High | Low | ✅ Done |
-| 7 | Canonical URL tags | High | Low | ⬜ Todo |
+| 7 | Canonical URL tags | High | Low | ✅ Done |
 | 8 | Improve homepage `<title>` | High | Trivial | ✅ Done |
 | 9 | Person/Organization JSON-LD | High | Medium | ⬜ Todo |
 | 10 | Article schema for milestones | High | Medium | ⬜ Todo |
