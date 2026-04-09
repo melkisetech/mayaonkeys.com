@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="{{ config.url }}{{ page.url }}" />
 
-  <title>{% if title %}{{ title }} — {% endif %}Maya's Piano Journey</title>
+  <title>{% if titleTag %}{{ titleTag }}{% elif title %}{{ title }} — Maya's Piano Journey{% else %}Maya's Piano Journey{% endif %}</title>
   <meta name="description" content="{{ description or 'Following Maya\'s piano learning adventure — songs, milestones, and musical moments.' }}" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{% if title %}{{ title }} — {% endif %}Maya's Piano Journey" />
+  <meta name="twitter:title" content="{% if titleTag %}{{ titleTag }}{% elif title %}{{ title }} — Maya's Piano Journey{% else %}Maya's Piano Journey{% endif %}" />
   <meta name="twitter:description" content="{{ description or 'Following Maya\'s piano learning adventure — songs, milestones, and musical moments.' }}" />
   <meta name="twitter:image" content="{{ config.url }}{{ ogImage or '/images/banner.jpg' }}" />
-  
+
   <!-- Open Graph -->
   <meta property="og:site_name" content="Maya's Piano Journey" />
   <meta property="og:type" content="{{ ogType or 'website' }}" />
-  <meta property="og:title" content="{% if title %}{{ title }} — {% endif %}Maya's Piano Journey" />
+  <meta property="og:title" content="{% if titleTag %}{{ titleTag }}{% elif title %}{{ title }} — Maya's Piano Journey{% else %}Maya's Piano Journey{% endif %}" />
   <meta property="og:description" content="{{ description or 'Following Maya\'s piano learning adventure — songs, milestones, and musical moments.' }}" />
   <meta property="og:url" content="{{ config.url }}{{ page.url }}" />
   <meta property="og:image" content="{{ config.url }}{{ ogImage or '/images/banner.jpg' }}" />
