@@ -17,7 +17,7 @@
   <!-- Netlify Identity widget (handles invite/confirmation tokens at the site root) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col relative">
 
   <!-- Skip to main content (a11y) -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:text-brand-purple-500 focus:font-semibold">
@@ -73,8 +73,13 @@
     </nav>
   </header>
 
+  <!-- Artwork banner — fades into the page content below -->
+  <div class="page-banner" role="presentation" aria-hidden="true">
+    <div class="page-banner__img" id="banner-img"></div>
+  </div>
+
   <!-- Page content -->
-  <main id="main-content" class="flex-1">
+  <main id="main-content" class="flex-1 relative z-10">
     {{ content | safe }}
   </main>
 
@@ -176,6 +181,22 @@
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && !lightbox.classList.contains("hidden")) { close(); }
       });
+    })();
+  </script>
+
+  <!-- Banner parallax -->
+  <script>
+    (function () {
+      var img = document.getElementById("banner-img");
+      if (!img) return;
+      var ticking = false;
+      function update() {
+        img.style.transform = "translateY(" + (window.scrollY * 0.3) + "px)";
+        ticking = false;
+      }
+      window.addEventListener("scroll", function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
     })();
   </script>
 
