@@ -48,10 +48,10 @@ These issues prevent the site from appearing in search engines at all.
 - **Issue:** No Twitter Card tags — X/Twitter shares show no preview.
 - **Fix:** Add `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`.
 
-### 7. Add canonical URL tags
+### ✅ 7. Add canonical URL tags
 - **File:** `_includes/base.njk`
 - **Issue:** No `<link rel="canonical">` tag. This is especially important for paginated year pages (`/songs/2025/`, `/songs/2026/`) to prevent duplicate content issues.
-- **Fix:** Add `<link rel="canonical" href="{{ page.url | absoluteUrl(metadata.url) }}" />` using the site's base URL from config/metadata.
+- **Done:** Added `<link rel="canonical" href="{{ config.url }}{{ page.url }}" />` to `<head>`, using `config.url` (`https://www.mayaonkeys.com`) from `_data/config.json`.
 
 ### 8. Improve `<title>` tag content
 - **File:** `_includes/base.njk:4`
@@ -194,6 +194,8 @@ These issues prevent the site from appearing in search engines at all.
 | 5 | Open Graph tags | High | Low | ✅ Done |
 | 4 | Per-page meta descriptions | High | Low | ✅ Done |
 | 5 | Open Graph tags | High | Low | ⬜ Todo |
+| 6 | Twitter Card tags | High | Low | ⬜ Todo |
+| 7 | Canonical URL tags | High | Low | ✅ Done |
 | 6 | Twitter Card tags | High | Low | ✅ Done |
 | 7 | Canonical URL tags | High | Low | ⬜ Todo |
 | 8 | Improve homepage `<title>` | High | Trivial | ⬜ Todo |
