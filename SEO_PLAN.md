@@ -53,10 +53,10 @@ These issues prevent the site from appearing in search engines at all.
 - **Issue:** No `<link rel="canonical">` tag. This is especially important for paginated year pages (`/songs/2025/`, `/songs/2026/`) to prevent duplicate content issues.
 - **Done:** Added `<link rel="canonical" href="{{ config.url }}{{ page.url }}" />` to `<head>`, using `config.url` (`https://www.mayaonkeys.com`) from `_data/config.json`.
 
-### 8. Improve `<title>` tag content
-- **File:** `_includes/base.njk:4`
+### ✅ 8. Improve `<title>` tag content
+- **File:** `_includes/base.njk:4`, `pages/index.njk`
 - **Issue:** The title pattern `{{ title }} — Maya's Piano Journey` puts the page name first, which is good practice. However, the homepage title is currently just "Home — Maya's Piano Journey"; it should be the brand name or a keyword-rich phrase.
-- **Fix:** For the homepage, use a distinctive title like "Maya's Piano Journey — A Young Pianist's Progress" instead of "Home — Maya's Piano Journey".
+- **Done:** Added `titleTag` front matter support to `base.njk` — when set, it overrides the full title (and og/twitter title) verbatim. Set `titleTag: "Maya's Piano Journey — A Young Pianist's Progress"` on the homepage.
 
 ---
 
@@ -198,7 +198,7 @@ These issues prevent the site from appearing in search engines at all.
 | 7 | Canonical URL tags | High | Low | ✅ Done |
 | 6 | Twitter Card tags | High | Low | ✅ Done |
 | 7 | Canonical URL tags | High | Low | ⬜ Todo |
-| 8 | Improve homepage `<title>` | High | Trivial | ⬜ Todo |
+| 8 | Improve homepage `<title>` | High | Trivial | ✅ Done |
 | 9 | Person/Organization JSON-LD | High | Medium | ⬜ Todo |
 | 10 | Article schema for milestones | High | Medium | ⬜ Todo |
 | 11 | BreadcrumbList schema | High | Low | ⬜ Todo |
