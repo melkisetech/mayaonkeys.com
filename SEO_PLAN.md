@@ -38,16 +38,10 @@ These issues prevent the site from appearing in search engines at all.
     - Milestones: "Key milestones in Maya's piano journey, from first lesson to repertoire growth."
     - Songs by year: "Piano songs Maya learned in {{ year }}."
 
-### 5. Add Open Graph (og:) meta tags
+### ✅ 5. Add Open Graph (og:) meta tags
 - **File:** `_includes/base.njk`
 - **Issue:** No Open Graph tags — links shared on social media show no preview image, title, or description.
-- **Fix:** Add the following to `<head>`:
-  - `og:type` (website for static pages, article for milestone entries)
-  - `og:title`
-  - `og:description`
-  - `og:url`
-  - `og:image` (use a default site image, overridable per-page)
-  - `og:site_name`
+- **Done:** Added `og:site_name`, `og:type`, `og:title`, `og:description`, `og:url`, and `og:image` to `<head>`. Defaults to `website` type and `/images/banner.jpg`; overridable per-page via `ogType`, `ogImage`, and `description` front matter.
 
 ### 6. Add Twitter Card meta tags
 - **File:** `_includes/base.njk`
@@ -197,7 +191,7 @@ These issues prevent the site from appearing in search engines at all.
 | 2 | Fix robots.txt | Critical | Trivial | ✅ Done |
 | 3 | Create sitemap.xml | Critical | Low | ✅ Done |
 | 4 | Per-page meta descriptions | High | Low | ⬜ Todo |
-| 5 | Open Graph tags | High | Low | ⬜ Todo |
+| 5 | Open Graph tags | High | Low | ✅ Done |
 | 6 | Twitter Card tags | High | Low | ⬜ Todo |
 | 7 | Canonical URL tags | High | Low | ⬜ Todo |
 | 8 | Improve homepage `<title>` | High | Trivial | ⬜ Todo |
