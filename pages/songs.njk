@@ -26,7 +26,7 @@ description: "A list of all piano songs Maya has learned and is currently learni
         <rect x="1" y="1" width="22" height="18" rx="2"/>
         <path d="M1 4l11 8 11-8" stroke-linejoin="round"/>
       </svg>
-      Daily Practice
+      Oldie Goldie
     </button>
   </div>
 </section>
@@ -98,7 +98,7 @@ description: "A list of all piano songs Maya has learned and is currently learni
   {# Close button #}
   <button id="js-practice-close"
     class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
-    aria-label="Close daily practice">
+    aria-label="Close Oldie Goldie">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
     </svg>
@@ -107,7 +107,7 @@ description: "A list of all piano songs Maya has learned and is currently learni
   {# Header #}
   <div class="text-center mb-6 sm:mb-8">
     <p class="text-4xl mb-3" aria-hidden="true">🎹</p>
-    <h2 id="pc-modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white mb-2">Today's Practice</h2>
+    <h2 id="pc-modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white mb-2">Oldie Goldie</h2>
     <p class="text-white/50 text-sm" id="js-pc-hint">Tap each envelope to reveal a song</p>
   </div>
 
@@ -356,7 +356,7 @@ description: "A list of all piano songs Maya has learned and is currently learni
       dateEl.textContent = song.dateLearned ? 'Learned ' + song.dateLearned : '';
     });
     hint.textContent = pool.length < 3
-      ? 'Learn more songs to unlock the full set!'
+      ? 'Learn more songs to unlock the full Oldie Goldie set!'
       : 'Tap each envelope to reveal a song';
   }
 
