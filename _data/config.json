@@ -3,6 +3,7 @@
   "name": "Maya",
   "startDate": "2025-10",
   "practicePerWeek": 5,
+  "practicePoolSize": 30,
   "bio": "Maya started piano lessons at age 5 and has been playing ever since! She loves learning new songs and performing for family.",
   "instagramHandle": "maya.on.keys",
   "instagramUrl": "https://instagram.com/maya.on.keys",
