@@ -18,6 +18,16 @@ description: "A list of all piano songs Maya has learned and is currently learni
     <p class="text-brand-dark/60 text-base sm:text-lg">
       {{ learnedCount }} learned · {{ learningCount }} in progress
     </p>
+    <button id="js-practice-open"
+      class="btn-primary mt-5 inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-purple-300 focus:ring-offset-2"
+      aria-haspopup="dialog"
+      aria-controls="js-practice-modal">
+      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="1" y="1" width="22" height="18" rx="2"/>
+        <path d="M1 4l11 8 11-8" stroke-linejoin="round"/>
+      </svg>
+      Daily Practice
+    </button>
   </div>
 </section>
 
@@ -69,3 +79,321 @@ description: "A list of all piano songs Maya has learned and is currently learni
   {% endif %}
 
 </section>
+
+{# ── Practice pool data (embedded at build time for client-side random pick) ── #}
+{% set _poolSize = config.practicePoolSize if config.practicePoolSize else 30 %}
+{% set _practicePool = collections.songs | learnedSongs | limit(_poolSize) %}
+<script id="js-practice-pool" type="application/json">
+[{% for s in _practicePool %}{% if not loop.first %},{% endif %}{"title":{{ s.data.title | dump | safe }},"composer":{{ (s.data.composer or null) | dump | safe }},"dateLearned":{{ (s.data.dateLearned or null) | dump | safe }}}{% endfor %}]
+</script>
+
+{# ── Daily Practice Modal ─────────────────────────────────────────────────── #}
+<div id="js-practice-modal"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="pc-modal-title"
+     class="hidden fixed inset-0 z-50 flex flex-col items-center justify-center p-4 sm:p-8"
+     style="background:rgba(30,16,64,0.93);backdrop-filter:blur(8px)">
+
+  {# Close button #}
+  <button id="js-practice-close"
+    class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+    aria-label="Close daily practice">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  {# Header #}
+  <div class="text-center mb-6 sm:mb-8">
+    <p class="text-4xl mb-3" aria-hidden="true">🎹</p>
+    <h2 id="pc-modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white mb-2">Today's Practice</h2>
+    <p class="text-white/50 text-sm" id="js-pc-hint">Tap each envelope to reveal a song</p>
+  </div>
+
+  {# Cards #}
+  <div class="flex flex-row gap-3 sm:gap-5 items-center justify-center">
+
+    <button class="pc-card" aria-label="Reveal song 1" data-idx="0">
+      <div class="pc-inner">
+        <div class="pc-back">
+          <span class="pc-back-num">1</span>
+          <svg class="pc-env-icon" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="2" y="2" width="44" height="32" rx="4"/>
+            <path d="M2 6l22 15L46 6" stroke-linejoin="round"/>
+          </svg>
+          <span class="pc-back-hint">Tap to open</span>
+        </div>
+        <div class="pc-front">
+          <span class="pc-front-num">1</span>
+          <span class="pc-title" id="js-pc-title-0"></span>
+          <span class="pc-composer" id="js-pc-composer-0"></span>
+          <span class="pc-date" id="js-pc-date-0"></span>
+        </div>
+      </div>
+    </button>
+
+    <button class="pc-card" aria-label="Reveal song 2" data-idx="1">
+      <div class="pc-inner">
+        <div class="pc-back">
+          <span class="pc-back-num">2</span>
+          <svg class="pc-env-icon" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="2" y="2" width="44" height="32" rx="4"/>
+            <path d="M2 6l22 15L46 6" stroke-linejoin="round"/>
+          </svg>
+          <span class="pc-back-hint">Tap to open</span>
+        </div>
+        <div class="pc-front">
+          <span class="pc-front-num">2</span>
+          <span class="pc-title" id="js-pc-title-1"></span>
+          <span class="pc-composer" id="js-pc-composer-1"></span>
+          <span class="pc-date" id="js-pc-date-1"></span>
+        </div>
+      </div>
+    </button>
+
+    <button class="pc-card" aria-label="Reveal song 3" data-idx="2">
+      <div class="pc-inner">
+        <div class="pc-back">
+          <span class="pc-back-num">3</span>
+          <svg class="pc-env-icon" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="2" y="2" width="44" height="32" rx="4"/>
+            <path d="M2 6l22 15L46 6" stroke-linejoin="round"/>
+          </svg>
+          <span class="pc-back-hint">Tap to open</span>
+        </div>
+        <div class="pc-front">
+          <span class="pc-front-num">3</span>
+          <span class="pc-title" id="js-pc-title-2"></span>
+          <span class="pc-composer" id="js-pc-composer-2"></span>
+          <span class="pc-date" id="js-pc-date-2"></span>
+        </div>
+      </div>
+    </button>
+
+  </div>
+
+  {# Reshuffle button #}
+  <button id="js-practice-reshuffle"
+    class="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-teal-400 hover:bg-brand-teal-500 text-white font-display font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/30">
+    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+    </svg>
+    New Set
+  </button>
+
+</div>
+
+<style>
+/* ─── Practice Cards ─────────────────────────────────────── */
+.pc-card {
+  width: 106px;
+  height: 152px;
+  perspective: 900px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+@media (min-width: 480px) {
+  .pc-card { width: 140px; height: 196px; }
+}
+@media (min-width: 640px) {
+  .pc-card { width: 164px; height: 224px; }
+}
+
+.pc-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pc-card.is-open .pc-inner {
+  transform: rotateY(180deg);
+}
+
+.pc-back,
+.pc-front {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.pc-back {
+  background: linear-gradient(145deg, #1e1040 0%, #7c3aed 100%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.pc-front {
+  transform: rotateY(180deg);
+  background: #faf7f2;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  border: 1px solid rgba(124,58,237,0.15);
+}
+
+.pc-back-num {
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  font-family: Nunito, sans-serif;
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.3);
+}
+
+.pc-env-icon {
+  width: 38px;
+  height: 28px;
+  color: rgba(255,255,255,0.75);
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
+@media (min-width: 640px) {
+  .pc-env-icon { width: 48px; height: 36px; }
+}
+
+.pc-back-hint {
+  font-family: Nunito, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-top: 2px;
+}
+@media (min-width: 480px) {
+  .pc-back-hint { font-size: 10px; }
+}
+
+.pc-front-num {
+  font-family: Nunito, sans-serif;
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a87fda;
+  margin-bottom: 2px;
+}
+
+.pc-title {
+  font-family: Nunito, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: #1e1040;
+  line-height: 1.3;
+  word-break: break-word;
+  hyphens: auto;
+}
+@media (min-width: 480px) {
+  .pc-title { font-size: 15px; }
+}
+
+.pc-composer {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  color: rgba(30,16,64,0.5);
+  line-height: 1.3;
+  margin-top: 1px;
+}
+
+.pc-date {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  color: #0d8080;
+  font-weight: 600;
+  margin-top: 4px;
+}
+@media (min-width: 480px) {
+  .pc-date { font-size: 11px; }
+}
+</style>
+
+<script>
+(function () {
+  var pool = JSON.parse(document.getElementById('js-practice-pool').textContent);
+  var modal = document.getElementById('js-practice-modal');
+  var openBtn = document.getElementById('js-practice-open');
+  var closeBtn = document.getElementById('js-practice-close');
+  var reshuffleBtn = document.getElementById('js-practice-reshuffle');
+  var hint = document.getElementById('js-pc-hint');
+  var cards = document.querySelectorAll('.pc-card');
+
+  function pickSongs() {
+    if (pool.length === 0) return [];
+    if (pool.length <= 3) return pool.slice();
+    var picked = [], seen = {};
+    while (picked.length < 3) {
+      var i = Math.floor(Math.random() * pool.length);
+      if (!seen[i]) { seen[i] = true; picked.push(pool[i]); }
+    }
+    return picked;
+  }
+
+  function deal() {
+    var songs = pickSongs();
+    cards.forEach(function (card, i) {
+      var song = songs[i];
+      if (!song) { card.style.visibility = 'hidden'; return; }
+      card.style.visibility = '';
+      document.getElementById('js-pc-title-' + i).textContent = song.title;
+      var compEl = document.getElementById('js-pc-composer-' + i);
+      compEl.textContent = song.composer || '';
+      compEl.style.display = song.composer ? '' : 'none';
+      var dateEl = document.getElementById('js-pc-date-' + i);
+      dateEl.textContent = song.dateLearned ? 'Learned ' + song.dateLearned : '';
+    });
+    hint.textContent = pool.length < 3
+      ? 'Learn more songs to unlock the full set!'
+      : 'Tap each envelope to reveal a song';
+  }
+
+  function openModal() {
+    deal();
+    cards.forEach(function (c) { c.classList.remove('is-open'); });
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  reshuffleBtn.addEventListener('click', function () {
+    cards.forEach(function (c) { c.classList.remove('is-open'); });
+    setTimeout(deal, 520);
+  });
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      this.classList.toggle('is-open');
+    });
+  });
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  });
+})();
+</script>
