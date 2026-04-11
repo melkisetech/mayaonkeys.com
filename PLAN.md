@@ -92,12 +92,63 @@ Allows songs and milestones to link out to YouTube, Instagram, TikTok, or any UR
 
 ---
 
+## Branding & UI Enhancements (post-initial build)
+
+| # | Description | Status |
+|---|-------------|--------|
+| 24 | Replace piano emoji in nav/header with custom PNG icon (`/images/piano-icon.png`) | Done |
+| 25 | Add artwork background banner with parallax scroll effect to homepage | Done |
+| 26 | Fix banner not showing on songs year pages | Done |
+| 27 | Add "Created by melkisetech" link to footer | Done |
+
+---
+
+## Content & Data Model Updates
+
+| # | Description | Status |
+|---|-------------|--------|
+| 28 | Use date-prefixed filenames for song markdown files; make `composer` field optional | Done |
+| 29 | Add `LICENCE.md` — dual licence (MIT for code, all rights reserved for Maya's content) | Done |
+
+---
+
+## SEO Improvements
+
+Full details tracked in `SEO_PLAN.md`. Summary of completed items:
+
+| # | Description | Status |
+|---|-------------|--------|
+| 30 | Remove `noindex` meta tag and fix `robots.txt` (were blocking all search indexing) | Done |
+| 31 | Create `sitemap.xml` via Eleventy template (`pages/sitemap.njk`) | Done |
+| 32 | Add per-page `<meta name="description">` support via `description` front matter | Done |
+| 33 | Add Open Graph (`og:`) meta tags to base layout | Done |
+| 34 | Add Twitter Card meta tags to base layout | Done |
+| 35 | Add `<link rel="canonical">` tag to base layout | Done |
+| 36 | Improve homepage `<title>` tag with keyword-rich content via `titleTag` front matter | Done |
+| 37 | Add grand piano favicon (16×16 and 32×32 PNG) | Done |
+
+---
+
+## Oldie Goldie Feature
+
+A "practice randomiser" on the Songs page that picks 3 mystery songs from the learned pool and reveals them via flip-card envelopes. Encourages revisiting older pieces.
+
+| # | Description | Status |
+|---|-------------|--------|
+| 38 | Add "Daily Practice" mystery envelope card feature to Songs page | Done |
+| 39 | Rename "Daily Practice" to "Oldie Goldie" | Done |
+| 40 | Update Oldie Goldie modal header emoji (settled on 💌) | Done |
+
+---
+
 ## Key Architectural Notes
 
 - Songs live as individual `.md` files in `content/songs/`; templates use `collections.songs`
+- Song filenames are date-prefixed (e.g. `2025-11-twinkle-twinkle.md`); `composer` is optional
 - `songs.11tydata.json` sets `permalink: false` so songs don't generate individual pages
 - `startDate` in `config.json` uses `YYYY-MM` format; months-playing is computed client-side
 - `admin/` folder is added to 11ty passthrough copy so it appears in `_site/`
 - No individual milestone detail pages — list-only view on `/milestones`
 - No individual song detail pages — list/year-page view only
 - No full name, school, or location anywhere on the site
+- SEO: `noindex` removed, `robots.txt` allows crawling, `sitemap.xml` auto-generated at build
