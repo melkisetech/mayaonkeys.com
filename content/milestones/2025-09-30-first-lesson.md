@@ -1,7 +1,7 @@
 ---
 title: First Piano Lesson
 date: 2025-09-30
-image: /images/first_lesson.jpg
+image: /images/first-lesson.jpg
 imageAlt: Maya at the piano during her first lesson
 ---
 
