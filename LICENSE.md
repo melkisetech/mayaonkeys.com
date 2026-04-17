@@ -11,7 +11,7 @@ repository are licensed under the MIT Licence. This includes:
 
 - Source code and templates (`src/`, `pages/`, `_includes/`, `_data/`, `admin/`)
 - Configuration files (`tailwind.config.js`, `netlify.config.js`, `package.json`, etc.)
-- Documentation (`README.md`, `PLAN.md`, `REQUIREMENTS.md`)
+- Documentation (`README.md`, `PLAN.md`)
 - Song and milestone data structures and schema
 - Entries for songs sourced from published sheet music or public domain works
 
