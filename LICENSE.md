@@ -33,18 +33,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Maya's Personal Content — All Rights Reserved
-
-Copyright (c) 2026 Maya. All rights reserved.
-
-The following content is the personal intellectual property of Maya and may
-**not** be copied, reproduced, distributed, modified, or used in any form
-without explicit written permission:
-
-- Photographs and videos featuring Maya
-- Original artwork and graphics created for or by Maya
-- Original songs, compositions, or lyrics written by Maya
-- Personal profile links (e.g. Spotify artist profile, YouTube channel, social media)
-- Any other content that personally identifies or represents Maya as an individual artist
-
-This content is protected by copyright law. Unauthorized use is prohibited.
