@@ -1,13 +1,13 @@
-# Licence
+# License
 
-This repository uses a dual licence structure.
+This repository uses a dual license structure.
 
-## Code & Documentation — MIT Licence
+## Code & Documentation — MIT License
 
 Copyright (c) 2026 Maya on Keys
 
 The source code, templates, configuration files, and documentation in this
-repository are licensed under the MIT Licence. This includes:
+repository are licensed under the MIT License. This includes:
 
 - Source code and templates (`src/`, `pages/`, `_includes/`, `_data/`, `admin/`)
 - Configuration files (`tailwind.config.js`, `netlify.config.js`, `package.json`, etc.)
@@ -47,4 +47,4 @@ without explicit written permission:
 - Personal profile links (e.g. Spotify artist profile, YouTube channel, social media)
 - Any other content that personally identifies or represents Maya as an individual artist
 
-This content is protected by copyright law. Unauthorised use is prohibited.
+This content is protected by copyright law. Unauthorized use is prohibited.
