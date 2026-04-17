@@ -108,7 +108,7 @@ Allows songs and milestones to link out to YouTube, Instagram, TikTok, or any UR
 | # | Description | Status |
 |---|-------------|--------|
 | 28 | Use date-prefixed filenames for song markdown files; make `composer` field optional | Done |
-| 29 | Add `LICENCE.md` — dual licence (MIT for code, all rights reserved for Maya's content) | Done |
+| 29 | Add `LICENSE.md` — dual license (MIT for code, all rights reserved for Maya's content) | Done |
 
 ---
 
