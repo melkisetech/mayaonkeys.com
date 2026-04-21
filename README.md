@@ -1,6 +1,16 @@
 # mayaonkeys.com
 
-A family-friendly website documenting Maya's piano learning journey — milestones, song repertoire, videos, and more.
+A family-friendly website documenting Maya's piano learning journey — milestones, song repertoire, videos, and more. Live at [mayaonkeys.com](https://www.mayaonkeys.com).
+
+## Features
+
+- **Song repertoire** — learned songs grouped by year, currently-learning section, external links to YouTube/Instagram/TikTok
+- **Oldie Goldie** — practice randomiser that picks 3 mystery songs from the learned pool via flip-card envelopes
+- **Milestones** — timestamped entries with images, grouped by year
+- **Videos** — embedded video page
+- **Artwork banner** — parallax scroll hero image across all pages
+- **SEO** — sitemap, Open Graph tags, Twitter Cards, canonical URLs, per-page meta descriptions, favicon
+- **CMS** — Decap CMS at `/admin` for content editing (requires Netlify Identity)
 
 ## Tech Stack
 
@@ -14,22 +24,38 @@ A family-friendly website documenting Maya's piano learning journey — mileston
 
 ```
 mayaonkeys.com/
-├── _data/              # Global data files (site config, songs list)
-├── _includes/          # Nunjucks layout partials and components
+├── _data/              # Global data files (site config)
+├── _includes/          # Nunjucks layout and component partials
+│   ├── base.njk        # Base layout (head, nav, footer, SEO tags)
+│   ├── song-card.njk   # Song card with external link auto-labelling
+│   ├── milestone-entry.njk
+│   └── stats-banner.njk
 ├── admin/              # Decap CMS configuration and UI
 ├── content/
 │   ├── songs/          # Individual song markdown files
-│   └── milestones/     # Markdown files for milestone entries
+│   └── milestones/     # Milestone markdown files with images
 ├── pages/              # Top-level page templates (.njk)
-├── public/             # Static files served at the site root
-│   └── css/            # Compiled CSS output (generated)
-│   └── images/         # Site images
-├── src/
-│   └── css/
-│       └── styles.css  # Tailwind CSS source
-├── .eleventy.js        # Eleventy configuration
-├── netlify.toml        # Netlify build and redirect settings
+│   ├── index.njk       # Homepage
+│   ├── about.njk       # About Maya
+│   ├── songs.njk       # Currently learning + year navigation
+│   ├── songs-year.njk  # Year-based learned songs pages (/songs/{year}/)
+│   ├── milestones.njk  # All milestones grouped by year
+│   ├── videos.njk      # Video embeds
+│   └── sitemap.njk     # Auto-generated sitemap.xml
+├── public/             # Static files served at site root
+│   ├── css/            # Compiled Tailwind CSS output
+│   ├── images/         # Banner, piano icon, milestone images
+│   ├── robots.txt      # Search engine crawl rules
+│   ├── favicon-16x16.png
+│   └── favicon-32x32.png
+├── src/css/styles.css  # Tailwind CSS source
+├── .eleventy.js        # Eleventy configuration (collections, filters)
 ├── tailwind.config.js  # Tailwind theme customisation
+├── netlify.toml        # Netlify build and redirect settings
+├── brand-guidelines.html  # Visual brand reference page
+├── PLAN.md             # Implementation plan with issue tracking
+├── SEO_PLAN.md         # SEO audit and improvement roadmap
+├── LICENSE.md          # Dual license (MIT code, all rights reserved content)
 └── _site/              # Build output — generated, not committed
 ```
 
@@ -107,18 +133,28 @@ The `netlify.toml` file configures:
 
 ## Content Management
 
-Site content lives in two places:
+Site content lives in markdown files and a JSON config:
 
 | Content type | Location |
 |---|---|
-| Milestones | `content/milestones/*.md` |
-| Song repertoire | `content/songs/*.md` |
-| Site configuration (name, bio, Instagram, etc.) | `_data/config.json` |
+| Songs | `content/songs/*.md` — front matter: `title`, `composer` (optional), `status`, `dateLearned`, `externalLink`, `externalLinkLabel` |
+| Milestones | `content/milestones/*.md` — front matter: `title`, `date`, `image`, `imageAlt`, `externalLink`, `externalLinkLabel` |
+| Site config | `_data/config.json` — name, bio, start date, Instagram, fun facts |
 
-You can also manage content through the CMS UI at `/admin` (requires Netlify Identity to be enabled on the site).
+Content can also be managed through the Decap CMS UI at `/admin` (requires Netlify Identity).
+
+### Song statuses
+
+- `learned` — appears on year pages (`/songs/{year}/`) and in the Oldie Goldie pool
+- `learning` — appears on the main `/songs/` page under "Currently Learning"
+
+### External link auto-labelling
+
+Songs and milestones support an `externalLink` field. The display label is auto-detected from the URL domain (`youtube.com` → "Watch on YouTube", `instagram.com` → "View on Instagram", etc.) or overridden with `externalLinkLabel`.
 
 ## Customisation
 
 - **Brand colours and fonts** — edit `tailwind.config.js`
 - **Navigation and base layout** — edit `_includes/base.njk`
-- **Eleventy collections and plugins** — edit `.eleventy.js`
+- **Eleventy collections and filters** — edit `.eleventy.js`
+- **CMS fields and collections** — edit `admin/config.yml`
